@@ -1,0 +1,7 @@
+obj\hashtest.obj 
+obj\m_hshtbl.obj 
+-lib c:\highc\small\hcc386 
+-lib c:\highc\small\hcc287
+-lib c:\highc\small\hc386
+-lib c:\highc\small\hcloc
+

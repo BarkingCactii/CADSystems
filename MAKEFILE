@@ -1,0 +1,94 @@
+CC = hc386
+SRCPATH = src/
+OBJPATH = obj/
+FLAGS = -Hnocopyr -c -f287 -Hansi -g -Hads -Hloc 
+DEFINES =
+DEBUG = -DDEBUG
+DEBUG_ADS = -DDEBUG_ADS
+INCPATH = -Ic:\highc\inc -Ic:\acad12\ads -Iinc
+# for c++ LIBPATH = -lib c:\acad12\ads\ads c:\highc\small\hcc386 c:\highc\small\hcc287
+LIBPATH = lib/
+LINK = 386link
+VPATH = obj;src;.;lib
+
+.SUFFIXES: .exp .obj .cpp .asm .c
+
+ASIOBJS    =$(OBJPATH)asitest.obj 
+
+FABCADOBJS =$(OBJPATH)fabcad.obj $(OBJPATH)dscale.obj   $(OBJPATH)alistman.obj \
+            $(OBJPATH)geom.obj   $(OBJPATH)alloc.obj
+
+DSCALEOBJS =$(OBJPATH)dstest.obj $(OBJPATH)dscale.obj   $(OBJPATH)alistman.obj \
+            $(OBJPATH)alloc.obj  $(OBJPATH)llistman.obj $(OBJPATH)geom.obj
+
+BREAKOBJS=$(OBJPATH)btest.obj    $(OBJPATH)breakall.obj $(OBJPATH)llistman.obj \
+          $(OBJPATH)alloc.obj    $(OBJPATH)alistman.obj $(OBJPATH)geom.obj
+
+HASHOBJS =$(OBJPATH)hashtest.obj $(OBJPATH)m_hshtbl.obj
+
+LAYOBJS = $(OBJPATH)laytest.obj  $(OBJPATH)layerc.obj   $(OBJPATH)llistman.obj \
+          $(OBJPATH)alloc.obj
+
+DLGOBJS = $(OBJPATH)main.obj     $(OBJPATH)dlgmgr.obj   $(OBJPATH)llistman.obj \
+          $(OBJPATH)alloc.obj
+
+DIMOBJS = $(OBJPATH)dimtest.obj  $(OBJPATH)dextx.obj    $(OBJPATH)dmain.obj \
+          $(OBJPATH)llistman.obj $(OBJPATH)alloc.obj    $(OBJPATH)geom.obj \
+          $(OBJPATH)dsort.obj    $(OBJPATH)dmkline.obj  $(OBJPATH)dinterp.obj \
+          $(OBJPATH)mettoimp.obj $(OBJPATH)imptomet.obj $(OBJPATH)dcross.obj \
+          $(OBJPATH)alistman.obj $(OBJPATH)dtxtwid.obj  $(OBJPATH)drepeat.obj \
+          $(OBJPATH)env.obj      $(OBJPATH)dtxtx.obj
+
+METOBJS = $(OBJPATH)mettoimp.obj $(OBJPATH)imptomet.obj $(OBJPATH)mettest.obj
+
+all : asitest.exp btest.exp hashtest.exp laytest.exp dimtest.exp dlgtest.exp \
+      mettest.exp dstest.exp fabcad.exp
+
+asitest.exp : $(ASIOBJS)
+    $(LINK) @asitest -EXE asitest 
+
+fabcad.exp : $(FABCADOBJS)
+    $(LINK) @fabcad -EXE fabcad -NOMAP -CVSYM
+
+dstest.exp : $(DSCALEOBJS)
+    $(LINK) @dstest -EXE dstest -NOMAP -CVSYM
+
+btest.exp : $(BREAKOBJS)
+    386lib $(LIBPATH)btest @btest
+    $(LINK) @btest -EXE btest -NOMAP -CVSYM
+
+hashtest.exp : $(HASHOBJS)
+    386lib $(LIBPATH)hashtest @hashtest
+    $(LINK) @hashtest -EXE hashtest -NOMAP -CVSYM
+
+laytest.exp : $(LAYOBJS)
+    386lib $(LIBPATH)laytest @laytest
+    $(LINK) @laytest -EXE laytest -NOMAP -CVSYM
+
+DIMTEST.exp : $(DIMOBJS)
+    386lib $(LIBPATH)dimtest @dimtest
+    $(LINK) @dimtest -EXE dimtest -NOMAP -CVSYM
+
+dlgtest.exp : $(DLGOBJS)
+    386lib $(LIBPATH)dlgtest @dlgtest
+    $(LINK) @dlgtest -EXE dlgtest -NOMAP -CVSYM
+
+mettest.exp : $(METOBJS)
+    $(LINK) $(METOBJS) @mettest -EXE mettest -NOMAP -CVSYM
+
+.cpp.obj :
+        @echo ---------------------------------------------------------------------------
+        @echo Compiling $<
+        @echo .
+	$(CC_CMD) $<
+        mv $*.obj obj
+
+.c.obj :
+        @echo ---------------------------------------------------------------------------
+        @echo Compiling $<
+        @echo .
+	$(CC_CMD) $<
+        mv $*.obj obj
+
+CFLAGS = $(FLAGS) $(DEBUG_ADS) $(DEFINES) $(INCPATH)
+CC_CMD = $(CC) $(CFLAGS) 

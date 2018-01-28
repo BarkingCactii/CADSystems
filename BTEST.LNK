@@ -1,0 +1,14 @@
+C:\HIGHC\small\initads.obj
+C:\HIGHC\small\mwintads.obj 
+obj\btest.obj 
+obj\breakall.obj 
+obj\llistman.obj
+obj\alistman.obj
+obj\alloc.obj
+obj\geom.obj
+-lib c:\acad12\ads\ads 
+-lib c:\highc\small\hcc386 
+-lib c:\highc\small\hcc287
+-lib c:\highc\small\hc386
+-lib c:\highc\small\hcloc
+

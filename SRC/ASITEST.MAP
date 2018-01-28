@@ -1,0 +1,1001 @@
+386|LINK: 4.1 -- Copyright (C) 1986-91 Phar Lap Software, Inc.
+Target CPU is 80386
+
+
+Command line switches:
+
+-pack -twocase @058c0000.lnk
+
+asitest.obj 
+-lib c:\acad12\ads\ads.lib 
+-lib c:\acad12\ase\asipw.lib 
+-lib C:\HIGHC\small\hcc386.lib 
+-lib C:\HIGHC\small\hcc387.lib 
+-lib C:\HIGHC\small\hc386.lib 
+-lib C:\HIGHC\small\hc387.lib 
+-lib C:\HIGHC\small\hcna.lib 
+
+
+Error: Undefined symbol "__CHP" in module "fet.c" at location 0000122C.
+Error: Undefined symbol "__CHP" in module "fet.c" at location 0000131A.
+Error: Undefined symbol "__CHP" in module "fet.c" at location 00001393.
+Error: Undefined symbol "_HugeValue" in module "fet.c" at location 000015BD.
+Error: Undefined symbol "_setjmp" in module "compile.c" at location 0000191D.
+Error: Undefined symbol "__CHP" in module "lexsql.c" at location 00006CF2.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007336.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 00007360.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007396.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 000073D0.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 0000740A.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 0000742C.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007475.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 00007497.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 000074CB.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 000074ED.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 0000752C.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 00007548.
+Error: Undefined symbol "_setjmp" in module "sqllink.c" at location 000075F2.
+Error: Undefined symbol "mng_allocatesegment" in module "sqllink.c" at location 000077BF.
+Error: Undefined symbol "mng_allocatesegment" in module "sqllink.c" at location 000077E0.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 000078C1.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 000078CE.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007974.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 000079AC.
+Error: Undefined symbol "getminalloc" in module "sqllink.c" at location 00007B7D.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007B91.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007B9B.
+Error: Undefined symbol "setminalloc" in module "sqllink.c" at location 00007BA9.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007C07.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007C19.
+Error: Undefined symbol "callp386" in module "sqllink.c" at location 00007C28.
+Error: Undefined symbol "setminalloc" in module "sqllink.c" at location 00007C35.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007C42.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007C53.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007C67.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007C6E.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 00007CA5.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 00007CB9.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007CD9.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 00007CFB.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007DAD.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007DB7.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007DC1.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007DD0.
+Error: Undefined symbol "mng_loadreal" in module "sqllink.c" at location 00007E46.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007EC7.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007ED1.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00007EEC.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00007EF3.
+Error: Undefined symbol "mng_getrealmcbsize" in module "sqllink.c" at location 00007F0F.
+Error: Undefined symbol "mng_farcall" in module "sqllink.c" at location 00007FFC.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008011.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 0000801E.
+Error: Undefined symbol "mng_farcall" in module "sqllink.c" at location 00008036.
+Error: Undefined symbol "mng_bufsize" in module "sqllink.c" at location 0000804A.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 0000806D.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00008074.
+Error: Undefined symbol "mng_callrealfcn" in module "sqllink.c" at location 000080E1.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 000080F4.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 000080FE.
+Error: Undefined symbol "mng_callrealfcn" in module "sqllink.c" at location 00008112.
+Error: Undefined symbol "mng_bufsize" in module "sqllink.c" at location 00008123.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008140.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00008147.
+Error: Undefined symbol "mng_farcall" in module "sqllink.c" at location 00008198.
+Error: Undefined symbol "mng_callrealfcn" in module "sqllink.c" at location 000081CB.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008313.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 0000831A.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008361.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 0000836F.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008419.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00008422.
+Error: Undefined symbol "mng_getrealenv" in module "sqllink.c" at location 00008462.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 000084C2.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 000084D0.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 0000874A.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 00008751.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008785.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 0000878F.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 000087AD.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 000087B4.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 000087F0.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 00008817.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008850.
+Error: Undefined symbol "mng_int21" in module "sqllink.c" at location 0000887C.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 00008898.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 0000889F.
+Error: Undefined symbol "mng_freesegment" in module "sqllink.c" at location 000088B2.
+Error: Undefined symbol "mng_getds" in module "sqllink.c" at location 000088DD.
+Error: Undefined symbol "mng_bufcpy" in module "sqllink.c" at location 000088EB.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 00009F36.
+Error: Undefined symbol "mng_int21" in module "mnger.c" at location 00009F58.
+Error: Undefined symbol "mng_int21" in module "mnger.c" at location 00009F7B.
+Error: Undefined symbol "mng_int21" in module "mnger.c" at location 00009FA0.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 00009FB6.
+Error: Undefined symbol "mng_int21" in module "mnger.c" at location 00009FEA.
+Error: Undefined symbol "mng_int21" in module "mnger.c" at location 0000A005.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A106.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A115.
+Error: Undefined symbol "mng_allocatemsdos" in module "mnger.c" at location 0000A12F.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A142.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A154.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A1DD.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A207.
+Error: Undefined symbol "mng_freemsdos" in module "mnger.c" at location 0000A214.
+Error: Undefined symbol "mng_freemsdos" in module "mnger.c" at location 0000A225.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A297.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A2A6.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A2D0.
+Error: Undefined symbol "mng_allocatemsdos" in module "mnger.c" at location 0000A312.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A338.
+Error: Undefined symbol "mng_setrealmcbsize" in module "mnger.c" at location 0000A348.
+Error: Undefined symbol "mng_freemsdos" in module "mnger.c" at location 0000A35B.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A379.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A3D2.
+Error: Undefined symbol "mng_getrealmcbsize" in module "mnger.c" at location 0000A3FB.
+Error: Undefined symbol "mng_getrealmcbpsp" in module "mnger.c" at location 0000A415.
+Error: Undefined symbol "mng_getrealmcbsize" in module "mnger.c" at location 0000A422.
+Error: Undefined symbol "mng_allocatesegment" in module "mnger.c" at location 0000A450.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A46E.
+Error: Undefined symbol "mng_getrealmcbpsp" in module "mnger.c" at location 0000A47D.
+Error: Undefined symbol "mng_getrealmcbsize" in module "mnger.c" at location 0000A48A.
+Error: Undefined symbol "mng_freemsdos" in module "mnger.c" at location 0000A496.
+Error: Undefined symbol "mng_freemsdos" in module "mnger.c" at location 0000A4A3.
+Error: Undefined symbol "mng_freesegment" in module "mnger.c" at location 0000A4AE.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A51A.
+Error: Undefined symbol "mng_freemsdos" in module "mnger.c" at location 0000A527.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A588.
+Error: Undefined symbol "mng_setmyds" in module "mnger.c" at location 0000A59D.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 0000A5B5.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A5BE.
+Error: Undefined symbol "mng_int21" in module "mnger.c" at location 0000A5E8.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 0000A629.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A630.
+Error: Undefined symbol "mng_getswitchep" in module "mnger.c" at location 0000A643.
+Error: Undefined symbol "mng_getcs" in module "mnger.c" at location 0000A64C.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 0000A65B.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A665.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 0000A6CE.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A6D5.
+Error: Undefined symbol "mng_getds" in module "mnger.c" at location 0000A6EE.
+Error: Undefined symbol "mng_bufcpy" in module "mnger.c" at location 0000A6F8.
+Error: Undefined symbol "mng_setswitchstack" in module "mnger.c" at location 0000A75D.
+Error: Undefined symbol "__8087" in module "fet.c".
+Error: Undefined symbol "__8087" in module "lexsql.c".
+Error: Undefined symbol "_fltused_" in module "fet.c".
+Error: Undefined symbol "_fltused_" in module "lexsql.c".
+
+Input module(s):
+
+"asitest" from file "asitest.obj".
+"adsacad" from file "c:\acad12\ads\ads.lib".
+"adsli" from file "c:\acad12\ads\ads.lib".
+"adsdlg" from file "c:\acad12\ads\ads.lib".
+"pafarcl" from file "c:\acad12\ads\ads.lib".
+"xmsg_rd" from file "c:\acad12\ads\ads.lib".
+"perr" from file "c:\acad12\ase\asipw.lib".
+"initsd" from file "c:\acad12\ase\asipw.lib".
+"coldsc" from file "c:\acad12\ase\asipw.lib".
+"colval" from file "c:\acad12\ase\asipw.lib".
+"fet" from file "c:\acad12\ase\asipw.lib".
+"execute" from file "c:\acad12\ase\asipw.lib".
+"compile" from file "c:\acad12\ase\asipw.lib".
+"log" from file "c:\acad12\ase\asipw.lib".
+"sqlalloc" from file "c:\acad12\ase\asipw.lib".
+"sqlstdio" from file "c:\acad12\ase\asipw.lib".
+"sqlio" from file "c:\acad12\ase\asipw.lib".
+"alofree" from file "c:\acad12\ase\asipw.lib".
+"sqlutil" from file "c:\acad12\ase\asipw.lib".
+"memutil" from file "c:\acad12\ase\asipw.lib".
+"lists" from file "c:\acad12\ase\asipw.lib".
+"build" from file "c:\acad12\ase\asipw.lib".
+"drop" from file "c:\acad12\ase\asipw.lib".
+"grant" from file "c:\acad12\ase\asipw.lib".
+"create" from file "c:\acad12\ase\asipw.lib".
+"conditio" from file "c:\acad12\ase\asipw.lib".
+"delete" from file "c:\acad12\ase\asipw.lib".
+"update" from file "c:\acad12\ase\asipw.lib".
+"insert" from file "c:\acad12\ase\asipw.lib".
+"select" from file "c:\acad12\ase\asipw.lib".
+"lexsql" from file "c:\acad12\ase\asipw.lib".
+"sqllink" from file "c:\acad12\ase\asipw.lib".
+"transbuf" from file "c:\acad12\ase\asipw.lib".
+"tapads" from file "c:\acad12\ase\asipw.lib".
+"mnger" from file "c:\acad12\ase\asipw.lib".
+"nodes" from file "c:\acad12\ase\asipw.lib".
+"_iob" from file "C:\HIGHC\small\hc386.lib".
+"fflush" from file "C:\HIGHC\small\hc386.lib".
+"fopen" from file "C:\HIGHC\small\hc386.lib".
+"fread" from file "C:\HIGHC\small\hc386.lib".
+"fseek" from file "C:\HIGHC\small\hc386.lib".
+"printf" from file "C:\HIGHC\small\hc386.lib".
+"sprintf" from file "C:\HIGHC\small\hc386.lib".
+"386gocd" from file "C:\HIGHC\small\hc386.lib".
+"386x87u" from file "C:\HIGHC\small\hc386.lib".
+"_d_gdrv" from file "C:\HIGHC\small\hc386.lib".
+"_d_sdrv" from file "C:\HIGHC\small\hc386.lib".
+"argstk3" from file "C:\HIGHC\small\hc386.lib".
+"cvars2" from file "C:\HIGHC\small\hc386.lib".
+"fltu" from file "C:\HIGHC\small\hc386.lib".
+"init" from file "C:\HIGHC\small\hc386.lib".
+"small" from file "C:\HIGHC\small\hc386.lib".
+"abort" from file "C:\HIGHC\small\hc386.lib".
+"ctypef" from file "C:\HIGHC\small\hc386.lib".
+"exit" from file "C:\HIGHC\small\hc386.lib".
+"getenv" from file "C:\HIGHC\small\hc386.lib".
+"malloc" from file "C:\HIGHC\small\hc386.lib".
+"setjmp" from file "C:\HIGHC\small\hc386.lib".
+"strchr" from file "C:\HIGHC\small\hc386.lib".
+"strcpy" from file "C:\HIGHC\small\hc386.lib".
+"strlen" from file "C:\HIGHC\small\hc386.lib".
+"strncmp" from file "C:\HIGHC\small\hc386.lib".
+"strncpy" from file "C:\HIGHC\small\hc386.lib".
+"strstr" from file "C:\HIGHC\small\hc386.lib".
+"strtok" from file "C:\HIGHC\small\hc386.lib".
+"fclose" from file "C:\HIGHC\small\hc386.lib".
+"_close" from file "C:\HIGHC\small\hc386.lib".
+"_cputs" from file "C:\HIGHC\small\hc386.lib".
+"_dofopen" from file "C:\HIGHC\small\hc386.lib".
+"_fill" from file "C:\HIGHC\small\hc386.lib".
+"_finit" from file "C:\HIGHC\small\hc386.lib".
+"_lseek" from file "C:\HIGHC\small\hc386.lib".
+"_read" from file "C:\HIGHC\small\hc386.lib".
+"_unlink" from file "C:\HIGHC\small\hc386.lib".
+"_write" from file "C:\HIGHC\small\hc386.lib".
+"fputc" from file "C:\HIGHC\small\hc386.lib".
+"ftell" from file "C:\HIGHC\small\hc386.lib".
+"fwrite" from file "C:\HIGHC\small\hc386.lib".
+"_mwint21" from file "C:\HIGHC\small\hc386.lib".
+"arg" from file "C:\HIGHC\small\hc386.lib".
+"cinit" from file "C:\HIGHC\small\hc386.lib".
+"doentry" from file "C:\HIGHC\small\hc386.lib".
+"errno" from file "C:\HIGHC\small\hc386.lib".
+"init_87" from file "C:\HIGHC\small\hc386.lib".
+"osmajor" from file "C:\HIGHC\small\hc386.lib".
+"_cleanup" from file "C:\HIGHC\small\hc386.lib".
+"_ultoa" from file "C:\HIGHC\small\hc386.lib".
+"ctype" from file "C:\HIGHC\small\hc386.lib".
+"memchr" from file "C:\HIGHC\small\hc386.lib".
+"memcmp" from file "C:\HIGHC\small\hc386.lib".
+"__close" from file "C:\HIGHC\small\hc386.lib".
+"__lseek" from file "C:\HIGHC\small\hc386.lib".
+"__read" from file "C:\HIGHC\small\hc386.lib".
+"__write" from file "C:\HIGHC\small\hc386.lib".
+"_flush" from file "C:\HIGHC\small\hc386.lib".
+"_isatty" from file "C:\HIGHC\small\hc386.lib".
+"_open" from file "C:\HIGHC\small\hc386.lib".
+"setvbuf" from file "C:\HIGHC\small\hc386.lib".
+"_seterr" from file "C:\HIGHC\small\hc386.lib".
+"_strrev" from file "C:\HIGHC\small\hc386.lib".
+"atexit" from file "C:\HIGHC\small\hc386.lib".
+"__open" from file "C:\HIGHC\small\hc386.lib".
+"_doserno" from file "C:\HIGHC\small\hc386.lib".
+"_doserr" from file "C:\HIGHC\small\hc386.lib".
+"atan" from file "C:\HIGHC\small\hc387.lib".
+"sin" from file "C:\HIGHC\small\hc387.lib".
+"387u" from file "C:\HIGHC\small\hc387.lib".
+"_doprint" from file "C:\HIGHC\small\hc387.lib".
+"strtod" from file "C:\HIGHC\small\hc387.lib".
+"mwtrans" from file "C:\HIGHC\small\hc387.lib".
+"87only" from file "C:\HIGHC\small\hc387.lib".
+"ld10" from file "C:\HIGHC\small\hc387.lib".
+"_doatof" from file "C:\HIGHC\small\hc387.lib".
+"_doecvt" from file "C:\HIGHC\small\hc387.lib".
+"mwtrunc" from file "C:\HIGHC\small\hc387.lib".
+"float" from file "C:\HIGHC\small\hc387.lib".
+"_pow10" from file "C:\HIGHC\small\hc387.lib".
+"_round" from file "C:\HIGHC\small\hc387.lib".
+"access" from file "C:\HIGHC\small\hcna.lib".
+"chdir" from file "C:\HIGHC\small\hcna.lib".
+"close" from file "C:\HIGHC\small\hcna.lib".
+"getcwd" from file "C:\HIGHC\small\hcna.lib".
+"itoa" from file "C:\HIGHC\small\hcna.lib".
+"lseek" from file "C:\HIGHC\small\hcna.lib".
+"open" from file "C:\HIGHC\small\hcna.lib".
+"read" from file "C:\HIGHC\small\hcna.lib".
+"unlink" from file "C:\HIGHC\small\hcna.lib".
+"write" from file "C:\HIGHC\small\hcna.lib".
+"_access" from file "C:\HIGHC\small\hc386.lib".
+"386387u" from file "C:\HIGHC\small\hc386.lib".
+"_chdir" from file "C:\HIGHC\small\hc386.lib".
+"_getcwd" from file "C:\HIGHC\small\hc386.lib".
+"_itoa" from file "C:\HIGHC\small\hc386.lib".
+"_itos" from file "C:\HIGHC\small\hc386.lib".
+"_stoi" from file "C:\HIGHC\small\hc386.lib".
+
+
+Segment map
+
+     Name         Group         Class     Type   Offset     Size
+------------  ------------  ------------  ----  --------  --------
+_TEXT         CGROUP        CODE          PUB   00000000  0000EE38
+ADSACAD       CGROUP        CODE          PVT   0000EE38  00005E00
+ADSLI         CGROUP        CODE          PVT   00014C38  0000056C
+ADSDLG        CGROUP        CODE          PVT   000151A4  00000AFC
+pafarcl       CGROUP        CODE          PVT   00015CA0  0000014C
+XMSG_RD       CGROUP        CODE          PVT   00015DEC  00000E48
+_MW_DOS_GET-  CGROUP        CODE          PVT   00016C34  0000001E
+_MW_DOS_SET-  CGROUP        CODE          PVT   00016C54  00000020
+?INIT         CGROUP        CODE          PVT   00016C74  00000661
+_MWSETJMP_    CGROUP        CODE          PVT   000172D8  00000068
+_MWSTRCPY     CGROUP        CODE          PVT   00017340  00000030
+_MWSTRLEN     CGROUP        CODE          PVT   00017370  0000001C
+_MW_CPUTS     CGROUP        CODE          PVT   0001738C  00000020
+_MWLIB        CGROUP        CODE          PVT   000173AC  00000025
+_MW_MWINT21_  CGROUP        CODE          PVT   000173D4  00000003
+_MWMEMCHR     CGROUP        CODE          PVT   000173D8  00000021
+_MWMEMCMP     CGROUP        CODE          PVT   000173FC  00000049
+_MW__CLOSE    CGROUP        CODE          PVT   00017448  0000002B
+_MW__LSEEK    CGROUP        CODE          PVT   00017474  00000037
+_MW__READ     CGROUP        CODE          PVT   000174AC  0000002F
+_MW__WRITE    CGROUP        CODE          PVT   000174DC  00000037
+_MW_ISATTY_   CGROUP        CODE          PVT   00017514  00000020
+_MW_MW_ERRN-  CGROUP        CODE          PVT   00017534  0000001E
+_MW__OPEN     CGROUP        CODE          PVT   00017554  0000007D
+_MWTRUNC      CGROUP        CODE          PVT   000175D4  00000031
+_MWACCESS_    CGROUP        CODE          PVT   00017608  00000005
+_MWCHDIR_     CGROUP        CODE          PVT   00017610  00000005
+_MWCLOSE_     CGROUP        CODE          PVT   00017618  00000005
+_MWGETCWD_    CGROUP        CODE          PVT   00017620  00000005
+_MWITOA_      CGROUP        CODE          PVT   00017628  00000005
+_MWLSEEK_     CGROUP        CODE          PVT   00017630  00000005
+_MWOPEN_      CGROUP        CODE          PVT   00017638  00000005
+_MWREAD_      CGROUP        CODE          PVT   00017640  00000005
+_MWUNLINK_    CGROUP        CODE          PVT   00017648  00000005
+_MWWRITE_     CGROUP        CODE          PVT   00017650  00000005
+_MWACCESS     CGROUP        CODE          PVT   00017658  00000049
+_MW_CHDIR_    CGROUP        CODE          PVT   000176A4  0000002C
+_MW_GETCWD_   CGROUP        CODE          PVT   000176D0  00000097
+_DATA         DGROUP        DATA          PUB   00017768  0000219C
+_DATA1        DGROUP        DATA          PUB   00019904  00000060
+@ADSACAD      DGROUP        DATA          PVT   00019964  00000708
+_MWLITERALS   DGROUP        DATA          PUB   0001A06C  00000700
+@ADSLI        DGROUP        DATA          PVT   0001A76C  00000158
+@ADSDLG       DGROUP        DATA          PVT   0001A8C4  0000001C
+@pafarcl      DGROUP        DATA          PVT   0001A8E0  0000026B
+@XMSG_RD      DGROUP        DATA          PVT   0001AB4C  000000FC
+CONST2        DGROUP        DATA          PUB   0001AC48  00000000
+_MWFLOATER                  DATA          COM   0001AC48  00000001
+_MWIFC        DGROUP        DATA          PUB   0001AC4A  00000000
+_MWIMC        DGROUP        DATA          PUB   0001AC4A  00000018
+_MWILC        DGROUP        DATA          PUB   0001AC62  00000000
+@CVARS2       DGROUP        DATA          PVT   0001AC64  00000100
+_MWLTCONV     DGROUP        DATA          COM   0001AD64  00000008
+_MWDFC        DGROUP        DATA          PUB   0001AD6C  00000000
+_MWDMC        DGROUP        DATA          PUB   0001AD6C  00000000
+_MWDLC        DGROUP        DATA          PUB   0001AD6C  00000000
+DSEG          DGROUP        DATA          PVT   0001AD6C  00000092
+?_MWSTATUS    DGROUP        DATA          COM   0001AE00  00000008
+TRDATA        DGROUP        DATA          PUB   0001AE08  0000000C
+_BSS          DGROUP        BSS           PUB   0001AE14  0000131C
+_EBSS_        DGROUP        BSS           PUB   0001C130  00000000
+c_common      DGROUP        BSS           PUB   0001C130  00000000
+CONST         DGROUP        CONST         PUB   0001C130  00003FFC
+?STACK        DGROUP        STACK         STK   0002012C  00002000
+
+
+Public symbols
+
+     Name       Value      Module        Segment      Size
+------------  --------  ------------  ------------  --------
+ASICALLOC     0000257C  alofree       _TEXT         
+ASIFREE       00002564  alofree       _TEXT         
+OutOfMemory-  00019964  adsacad       @ADSACAD      
+SMALL?        0001AC48  small         _MWFLOATER    
+__close       00017448  __close       _MW__CLOSE    
+__lseek       00017474  __lseek       _MW__LSEEK    
+__main        00016C79  init          ?INIT         
+__mwdfc       0001AD6C  init          _MWDFC        
+__mwdlc       0001AD6C  init          _MWDLC        
+__open        00017554  __open        _MW__OPEN     
+__read        000174AC  __read        _MW__READ     
+__write       000174DC  __write       _MW__WRITE    
+_access       00017658  _access       _MWACCESS     
+_alignment_-  000191CC  malloc        _DATA         
+_base         0001AD7E  init          DSEG          
+_bufendtab    00018EA8  _iob          _DATA         
+_c_exit       0000D334  _cleanup      _TEXT         
+_cannot_mix-  0001AC48  argstk3       _MWFLOATER    
+_cannot_mix-  0001AC48  ld10          _MWFLOATER    
+_cannot_mix-  0001AC48  387u          _MWFLOATER    
+_cannot_mix-  0001AC48  87only        _MWFLOATER    
+_cexit        0000D32C  _cleanup      _TEXT         
+_chdir        000176A4  _chdir        _MW_CHDIR_    
+_check_heap   0000BC30  malloc        _TEXT         
+_cinit        0000D070  cinit         _TEXT         
+_cleanup      0000D300  _cleanup      _TEXT         
+_close        0000C3F4  _close        _TEXT         
+_cnvi2s       0000EC08  _itos         _TEXT         
+_cnvn2s       0000EB0C  _itos         _TEXT         
+_cnvp2s       0000EC4C  _itos         _TEXT         
+_cnvs2i       0000ECD8  _stoi         _TEXT         
+_cnvs2n       0000ED40  _stoi         _TEXT         
+_cnvs2p       0000EE20  _stoi         _TEXT         
+_cnvs2u       0000EC64  _stoi         _TEXT         
+_cnvu2s       0000EBF0  _itos         _TEXT         
+_compare      000173FC  memcmp        _MWMEMCMP     
+_cputs        0001738C  _cputs        _MW_CPUTS     
+_ctype        0001AC64  cvars2        @CVARS2       
+_ctype_       0001FEBC  ctype         CONST         
+_doatof       0000E284  _doatof       _TEXT         
+_doecvt       0000E548  _doecvt       _TEXT         
+_dofopen      0000C428  _dofopen      _TEXT         
+_doprint      0000D734  _doprint      _TEXT         
+_dos_getdri-  00016C34  _d_gdrv       _MW_DOS_GET-  
+_dos_setdri-  00016C54  _d_sdrv       _MW_DOS_SET-  
+_doserr       00019530  _doserr       _DATA         
+_doserrno     0001952C  _doserno      _DATA         
+_dump_heap    0000B93C  malloc        _TEXT         
+_edata        0001AE14                _BSS          
+_end          0001C130                c_common      
+_exit         00017250  init          ?INIT         
+_exitv        00019494  _cleanup      _DATA         
+_fill         0000C604  _fill         _TEXT         
+_finit        0000C6C8  _finit        _TEXT         
+_flush        0000D3C8  _flush        _TEXT         
+_fmode        00018FA4  _iob          _DATA         
+_fopen_max    00018ABC  _iob          _DATA         
+_fpecvt       0000E85C  float         _TEXT         
+_fpepsd       000196D0  float         _DATA         
+_fpepsf       000196B8  float         _DATA         
+_fpepsl       000196C4  float         _DATA         
+_fpexpo       0000E8D8  float         _TEXT         
+_fphuge       000196AC  float         _DATA         
+_fpmaxd       00019718  float         _DATA         
+_fpmaxf       00019700  float         _DATA         
+_fpmaxl       0001970C  float         _DATA         
+_fpmind       000196F4  float         _DATA         
+_fpminf       000196DC  float         _DATA         
+_fpminl       000196E8  float         _DATA         
+_fpodd        0000E920  float         _TEXT         
+_fpoddf       0000E8EC  float         _TEXT         
+_fptrn        0000E9AC  float         _TEXT         
+_fptrnf       0000E974  float         _TEXT         
+_gda          0001AD9A  init          DSEG          
+_getcwd       000176D0  _getcwd       _MW_GETCWD_   
+_iob          00018AC0  _iob          _DATA         
+_iob_fioflag  00018F70  _iob          _DATA         
+_iob_tmpnam   000186D4  _iob          _DATA         
+_iob_unget    0001879C  _iob          _DATA         
+_isascii      0000B0D8  ctypef        _TEXT         
+_isatty       00017514  _isatty       _MW_ISATTY_   
+_isodigit     0000B124  ctypef        _TEXT         
+_itoa         0000EAF0  _itoa         _TEXT         
+_lseek        0000C7A4  _lseek        _TEXT         
+_must_link_-  0001AC48  387u          _MWFLOATER    
+_must_link_-  0001AC48  387u          _MWFLOATER    
+_mw1167       0001ADCB  init          DSEG          
+_mw387        0001ADC1  init          DSEG          
+_mw387_used   0001AC48  386387u       _MWFLOATER    
+_mw8087       0001ADB5  init          DSEG          
+_mw87_used    0001AC48  386x87u       _MWFLOATER    
+_mw87only     0001AC48  87only        _MWFLOATER    
+_mwCPU        0001AD70  init          DSEG          
+_mwINIT       00016C74  init          ?INIT         
+_mwOS         0001AD71  init          DSEG          
+_mw_errnoset  00017534  _seterr       _MW_MW_ERRN-  
+_mwarglen     0001ADAA  init          DSEG          
+_mwargp       0001AD9E  init          DSEG          
+_mwargstack   0001AC48  argstk3       _MWFLOATER    
+_mwargvp      0001ADA4  init          DSEG          
+_mwcall_one-  00017092  init          ?INIT         
+_mwclear_bss  00017072  init          ?INIT         
+_mwcontract-  0001725C  init          ?INIT         
+_mwdefault_-  00018FB4  abort         _DATA         
+_mwdo_ctors   0000D170  doentry       _TEXT         
+_mwdo_itoa    0000EA58  _itoa         _TEXT         
+_mwdo_ultoa   0000D338  _ultoa        _TEXT         
+_mwdomainch-  0000E1FD  mwtrans       _TEXT         
+_mwemc87      0001ADCD  init          DSEG          
+_mwenv        0001ADF4  init          DSEG          
+_mwenvip      000191C4  getenv        _DATA         
+_mwenvp       0001ADAE  init          DSEG          
+_mwes         0001AD74  init          DSEG          
+_mwexpand_h-  00017122  init          ?INIT         
+_mwfltused    0001AC48  fltu          _MWFLOATER    
+_mwfptanfin-  0000E1F0  mwtrans       _TEXT         
+_mwgetcs      0001724B  init          ?INIT         
+_mwgetds      00017246  init          ?INIT         
+_mwgetenv2    0000B3FC  getenv        _TEXT         
+_mwgoc        0001AC48  386gocd       _MWFLOATER    
+_mwgsel       0001AD72  init          DSEG          
+_mwheap_exp-  0001ADF9  init          DSEG          
+_mwinit_387u  0000D1F3  init_87       _TEXT         
+_mwinit_87    0000D1DC  init_87       _TEXT         
+_mwinit_87u   0000D1E3  init_87       _TEXT         
+_mwinit_con-  00016E4F  init          ?INIT         
+_mwinit_emc-  0000D203  init_87       _TEXT         
+_mwinit_env-  00016E73  init          ?INIT         
+_mwinit_ver   0001ADF7  init          DSEG          
+_mwinput      0001AD6C  init          DSEG          
+_mwint21      000173D4  _mwint21      _MW_MWINT21_  
+_mwis_286     0001ADB4  init          DSEG          
+_mwldouble10  0001AC48  ld10          _MWFLOATER    
+_mwno87       0001ADDD  init          DSEG          
+_mwoflocheck  0000E21C  mwtrans       _TEXT         
+_mwoops       0001945E  init_87       _DATA         
+_mwoutput     0001AD6E  init          DSEG          
+_mwprintnoc-  0001ADF6  init          DSEG          
+_mwprognamep  0001ADE8  init          DSEG          
+_mwset_stac-  00017240  init          ?INIT         
+_mwset_up_a-  0000CF80  arg           _TEXT         
+_mwss         00017243  init          ?INIT         
+_mwstack_li-  00018FAC  init          _DATA         
+_mwtransfin-  0000E1FD  mwtrans       _TEXT         
+_mwtrunc_     000175D4  mwtrunc       _MWTRUNC      
+_mwtruncu_    000175D4  mwtrunc       _MWTRUNC      
+_mwvalidche-  0000E213  mwtrans       _TEXT         
+_mwwind       0001ADF5  init          DSEG          
+_open         0000D42C  _open         _TEXT         
+_osmajor      00019490  osmajor       _DATA         
+_osminor      00019491  osmajor       _DATA         
+_osversion    00019490  osmajor       _DATA         
+_pmode        00018FA8  _iob          _DATA         
+_pow10        0000EA10  _pow10        _TEXT         
+_psp          0001AD74  init          DSEG          
+_read         0000C7D4  _read         _TEXT         
+_round        000197D8  _round        _DATA         
+_strrev       0000D5CC  _strrev       _TEXT         
+_tolower      0000B0EC  ctypef        _TEXT         
+_top          0001AD7A  init          DSEG          
+_toupper      0000B0E4  ctypef        _TEXT         
+_ultoa        0000D3AC  _ultoa        _TEXT         
+_unlink       000173AC  _unlink       _MWLIB        
+_write        0000CAA4  _write        _TEXT         
+abort         0000B010  abort         _TEXT         
+access        00017608  access        _MWACCESS_    
+ads_abort     0000EF74  adsacad       ADSACAD       
+ads_action_-  000152DC  adsdlg        ADSDLG        
+ads_add_list  000156A8  adsdlg        ADSDLG        
+ads_adiend    00014840  adsacad       ADSACAD       
+ads_adiinfo   00014764  adsacad       ADSACAD       
+ads_adistart  000147FC  adsacad       ADSACAD       
+ads_alert     000125E0  adsacad       ADSACAD       
+ads_angle     00014464  adsacad       ADSACAD       
+ads_angtof    00012368  adsacad       ADSACAD       
+ads_angtos    000121A4  adsacad       ADSACAD       
+ads_appname   0001A7F8  adsli         @ADSLI        
+ads_buildli-  00011DD0  adsacad       ADSACAD       
+ads_client_-  00015474  adsdlg        ADSDLG        
+ads_cmd       00011A04  adsacad       ADSACAD       
+ads_command   00011584  adsacad       ADSACAD       
+ads_cvunit    00012D64  adsacad       ADSACAD       
+ads_defun     000142E8  adsacad       ADSACAD       
+ads_dimensi-  00015780  adsdlg        ADSDLG        
+ads_dispt     000147E0  adsacad       ADSACAD       
+ads_distance  000144C0  adsacad       ADSACAD       
+ads_distof    00012350  adsacad       ADSACAD       
+ads_done_di-  000153D4  adsdlg        ADSDLG        
+ads_done_po-  00015384  adsdlg        ADSDLG        
+ads_draggen   00013380  adsacad       ADSACAD       
+ads_dscfg     000147A8  adsacad       ADSACAD       
+ads_dsxqt     000147C4  adsacad       ADSACAD       
+ads_end_ima-  000158E8  adsdlg        ADSDLG        
+ads_end_list  000156F8  adsdlg        ADSDLG        
+ads_entdel    00010330  adsacad       ADSACAD       
+ads_entget    0001022C  adsacad       ADSACAD       
+ads_entgetx   000101A0  adsacad       ADSACAD       
+ads_entlast   000103C8  adsacad       ADSACAD       
+ads_entmake   00010A1C  adsacad       ADSACAD       
+ads_entmod    000109B8  adsacad       ADSACAD       
+ads_entnext   000102A8  adsacad       ADSACAD       
+ads_entsel    00010430  adsacad       ADSACAD       
+ads_entupd    00010354  adsacad       ADSACAD       
+ads_exit      0000EEC0  adsacad       ADSACAD       
+ads_fail      0000EFA0  adsacad       ADSACAD       
+ads_fill_im-  00015868  adsdlg        ADSDLG        
+ads_findfile  0000F104  adsacad       ADSACAD       
+ads_get_attr  0001555C  adsdlg        ADSDLG        
+ads_get_att-  000155D8  adsdlg        ADSDLG        
+ads_get_tile  000154C8  adsdlg        ADSDLG        
+ads_getangle  00012778  adsacad       ADSACAD       
+ads_getargs   00015184  adsli         ADSLI         
+ads_getcorn-  000128B0  adsacad       ADSACAD       
+ads_getdist   000126DC  adsacad       ADSACAD       
+ads_getfiled  00012440  adsacad       ADSACAD       
+ads_getfunc-  0001517C  adsli         ADSLI         
+ads_getinput  00012AF4  adsacad       ADSACAD       
+ads_getint    000129DC  adsacad       ADSACAD       
+ads_getkword  00012A68  adsacad       ADSACAD       
+ads_getorie-  00012814  adsacad       ADSACAD       
+ads_getpoint  00012644  adsacad       ADSACAD       
+ads_getreal   00012948  adsacad       ADSACAD       
+ads_getstri-  0000F268  adsacad       ADSACAD       
+ads_getsym    000140D4  adsacad       ADSACAD       
+ads_getvar    0000F0A4  adsacad       ADSACAD       
+ads_graphscr  00012F3C  adsacad       ADSACAD       
+ads_grclear   00012F5C  adsacad       ADSACAD       
+ads_grdraw    000130F4  adsacad       ADSACAD       
+ads_grread    00013248  adsacad       ADSACAD       
+ads_grtext    00013188  adsacad       ADSACAD       
+ads_grvecs    0001307C  adsacad       ADSACAD       
+ads_handent   0001141C  adsacad       ADSACAD       
+ads_identmat  00019988  adsacad       @ADSACAD      
+ads_inf       0001AB0C  pafarcl       @pafarcl      
+ads_init      00014C38  adsli         ADSLI         
+ads_initget   0000F2AC  adsacad       ADSACAD       
+ads_inters    00013544  adsacad       ADSACAD       
+ads_invoke    00011D04  adsacad       ADSACAD       
+ads_isalnum   000149F8  adsacad       ADSACAD       
+ads_isalpha   00014950  adsacad       ADSACAD       
+ads_iscntrl   00014A44  adsacad       ADSACAD       
+ads_isdigit   00014998  adsacad       ADSACAD       
+ads_isgraph   00014A2C  adsacad       ADSACAD       
+ads_islower   00014980  adsacad       ADSACAD       
+ads_isprint   00014A10  adsacad       ADSACAD       
+ads_ispunct   000149E0  adsacad       ADSACAD       
+ads_isspace   000149C8  adsacad       ADSACAD       
+ads_isupper   00014968  adsacad       ADSACAD       
+ads_isxdigit  000149B0  adsacad       ADSACAD       
+ads_link      00014D2C  adsli         ADSLI         
+ads_load_di-  000151A4  adsdlg        ADSDLG        
+ads_loaded    00014084  adsacad       ADSACAD       
+ads_menucmd   00012604  adsacad       ADSACAD       
+ads_mode_ti-  00015728  adsdlg        ADSDLG        
+ads_nentsel   000104E8  adsacad       ADSACAD       
+ads_nentselp  00010738  adsacad       ADSACAD       
+ads_new_dia-  000152BC  adsdlg        ADSDLG        
+ads_new_pos-  00015234  adsdlg        ADSDLG        
+ads_newrb     0001507C  adsli         ADSLI         
+ads_osnap     00012FEC  adsacad       ADSACAD       
+ads_polar     00014508  adsacad       ADSACAD       
+ads_printf    0001153C  adsacad       ADSACAD       
+ads_prompt    000125AC  adsacad       ADSACAD       
+ads_putsym    00014150  adsacad       ADSACAD       
+ads_ratan2    000143B8  adsacad       ADSACAD       
+ads_recfgpo-  00014654  adsacad       ADSACAD       
+ads_redraw    00012F7C  adsacad       ADSACAD       
+ads_regapp    0000F170  adsacad       ADSACAD       
+ads_regfunc   00014F30  adsli         ADSLI         
+ads_relrb     000150B4  adsli         ADSLI         
+ads_retint    0000F7B0  adsacad       ADSACAD       
+ads_retlist   0000F604  adsacad       ADSACAD       
+ads_retname   0000F750  adsacad       ADSACAD       
+ads_retnil    0000F884  adsacad       ADSACAD       
+ads_retpoint  0000F6C0  adsacad       ADSACAD       
+ads_retreal   0000F7FC  adsacad       ADSACAD       
+ads_retstr    0000F708  adsacad       ADSACAD       
+ads_rett      0000F84C  adsacad       ADSACAD       
+ads_retval    0000F678  adsacad       ADSACAD       
+ads_retvoid   0000F8BC  adsacad       ADSACAD       
+ads_rtos      0001227C  adsacad       ADSACAD       
+ads_set_tile  00015420  adsdlg        ADSDLG        
+ads_setvar    0000EFC4  adsacad       ADSACAD       
+ads_slide_i-  000158A8  adsdlg        ADSDLG        
+ads_ssadd     00011130  adsacad       ADSACAD       
+ads_ssdel     00011204  adsacad       ADSACAD       
+ads_ssfree    00010FF0  adsacad       ADSACAD       
+ads_ssget     00010BE0  adsacad       ADSACAD       
+ads_sslength  0001102C  adsacad       ADSACAD       
+ads_ssmemb    0001122C  adsacad       ADSACAD       
+ads_ssname    0001109C  adsacad       ADSACAD       
+ads_start_d-  00015330  adsdlg        ADSDLG        
+ads_start_i-  000157F0  adsdlg        ADSDLG        
+ads_start_l-  00015650  adsdlg        ADSDLG        
+ads_tablet    00014884  adsacad       ADSACAD       
+ads_tblnext   00011254  adsacad       ADSACAD       
+ads_tblsear-  000112C8  adsacad       ADSACAD       
+ads_term_di-  000153F0  adsdlg        ADSDLG        
+ads_textbox   000113A0  adsacad       ADSACAD       
+ads_textpage  00012F1C  adsacad       ADSACAD       
+ads_textscr   00012EFC  adsacad       ADSACAD       
+ads_tolower   00014A88  adsacad       ADSACAD       
+ads_toupper   00014A5C  adsacad       ADSACAD       
+ads_trans     0001147C  adsacad       ADSACAD       
+ads_undef     00014350  adsacad       ADSACAD       
+ads_unload_-  000151FC  adsdlg        ADSDLG        
+ads_usrbrk    0001518C  adsli         ADSLI         
+ads_vector_-  00015828  adsdlg        ADSDLG        
+ads_vports    00012B38  adsacad       ADSACAD       
+ads_wcmatch   00012E3C  adsacad       ADSACAD       
+ads_xdroom    00010378  adsacad       ADSACAD       
+ads_xdsize    00010ABC  adsacad       ADSACAD       
+ads_xformss   00013324  adsacad       ADSACAD       
+ads_xload     00014218  adsacad       ADSACAD       
+ads_xunload   00014280  adsacad       ADSACAD       
+adsi_adiend   00014640  adsacad       ADSACAD       
+adsi_adiinfo  000145DC  adsacad       ADSACAD       
+adsi_adista-  0001462C  adsacad       ADSACAD       
+adsi_alignm-  0000EEA4  adsacad       ADSACAD       
+adsi_cbp      0001A7F4  adsli         @ADSLI        
+adsi_child_-  00015DCF  pafarcl       pafarcl       
+adsi_ct_set-  00014910  adsacad       ADSACAD       
+adsi_dispt    00014618  adsacad       ADSACAD       
+adsi_dlg_ca-  00015918  adsdlg        ADSDLG        
+adsi_dscfg    000145F0  adsacad       ADSACAD       
+adsi_dsxqt    00014604  adsacad       ADSACAD       
+adsi_ent2fa-  00014560  adsacad       ADSACAD       
+adsi_exit     0000EEE8  adsacad       ADSACAD       
+adsi_farcc    00015D4C  pafarcl       pafarcl       
+adsi_farcl    00015CA0  pafarcl       pafarcl       
+adsi_formar-  0000F2FC  adsacad       ADSACAD       
+adsi_getini-  00015D8B  pafarcl       pafarcl       
+adsi_link     00014D60  adsli         ADSLI         
+adsi_mach     00015D80  pafarcl       pafarcl       
+adsi_quit     00015DE8  pafarcl       pafarcl       
+adsi_report   00010B48  adsacad       ADSACAD       
+adsi_sprint   00014D10  adsli         ADSLI         
+adsi_xlobuf   0001A76C  adsli         @ADSLI        
+adsi_xmsg     0001611C  xmsg_rd       XMSG_RD       
+adsi_xmsg_c-  000165B8  xmsg_rd       XMSG_RD       
+adsi_xmsg_c-  00016614  xmsg_rd       XMSG_RD       
+adsi_xmsg_i-  00016668  xmsg_rd       XMSG_RD       
+adsi_xmsg_i-  00015DEC  xmsg_rd       XMSG_RD       
+adsi_xmsg_l-  000164D4  xmsg_rd       XMSG_RD       
+adsi_xmsg_t-  000166E0  xmsg_rd       XMSG_RD       
+asei_xmsg     00000F04  initsd        _TEXT         
+asei_xmsg_l-  00000F4C  initsd        _TEXT         
+asi_add_bin-  000036C8  lists         _TEXT         
+asi_add_col-  000034BC  lists         _TEXT         
+asi_add_col-  00003440  lists         _TEXT         
+asi_add_col-  0000360C  lists         _TEXT         
+asi_add_col-  0000338C  lists         _TEXT         
+asi_add_col-  00003404  lists         _TEXT         
+asi_add_grt   000038E8  lists         _TEXT         
+asi_add_out-  00003710  lists         _TEXT         
+asi_add_prv   000038A0  lists         _TEXT         
+asi_add_set-  00003774  lists         _TEXT         
+asi_add_tab-  00003548  lists         _TEXT         
+asi_add_tbl-  0000359C  lists         _TEXT         
+asi_add_val-  00003664  lists         _TEXT         
+asi_addmemm-  00002024  sqlalloc      _TEXT         
+asi_aggr_fu-  000072E8  lexsql        _TEXT         
+asi_bindlist  0001BB40  lists         _BSS          
+asi_binpower  00002C88  sqlutil       _TEXT         
+asi_bld_alt-  00003D0C  build         _TEXT         
+asi_bld_cre-  00003C34  build         _TEXT         
+asi_bld_crt-  00003BE4  build         _TEXT         
+asi_bld_crt-  00003B68  build         _TEXT         
+asi_bld_crt-  00003BA4  build         _TEXT         
+asi_bld_cur   00003A38  build         _TEXT         
+asi_bld_del-  00003B24  build         _TEXT         
+asi_bld_drop  00003CD8  build         _TEXT         
+asi_bld_gra-  00003C5C  build         _TEXT         
+asi_bld_ins-  00003A80  build         _TEXT         
+asi_bld_log-  000039A8  build         _TEXT         
+asi_bld_rev-  00003CA0  build         _TEXT         
+asi_bld_sel-  000039F8  build         _TEXT         
+asi_bld_upd-  00003AD4  build         _TEXT         
+asi_calloc    00001DCC  sqlalloc      _TEXT         
+asi_canlock-  00002228  sqlio         _TEXT         
+asi_cds       00000F8C  coldsc        _TEXT         
+asi_cex       00001860  execute       _TEXT         
+asi_cfgdrv    00008638  sqllink       _TEXT         
+asi_chdl      00001BBC  log           _TEXT         
+asi_checkex-  0000233C  sqlio         _TEXT         
+asi_close     00002258  sqlio         _TEXT         
+asi_com       000018BC  compile       _TEXT         
+asi_crt_nod-  0000A884  nodes         _TEXT         
+asi_crt_nod-  0000A79C  nodes         _TEXT         
+asi_cvl       00000FF4  colval        _TEXT         
+asi_do_alter  00005164  create        _TEXT         
+asi_do_cond-  00005FBC  conditio      _TEXT         
+asi_do_crea-  000050E4  create        _TEXT         
+asi_do_curs-  00006AF4  select        _TEXT         
+asi_do_dele-  00005FF4  delete        _TEXT         
+asi_do_drop   00003D5C  drop          _TEXT         
+asi_do_expr-  00005FE4  conditio      _TEXT         
+asi_do_grant  000040C4  grant         _TEXT         
+asi_do_inse-  0000622C  insert        _TEXT         
+asi_do_revo-  000041B8  grant         _TEXT         
+asi_do_sele-  0000675C  select        _TEXT         
+asi_do_upda-  00006078  update        _TEXT         
+asi_drvcall   00008560  sqllink       _TEXT         
+asi_drvinit   000082C0  sqllink       _TEXT         
+asi_drvterm   000086DC  sqllink       _TEXT         
+asi_dstnct    0001BC80  select        _BSS          
+asi_dupl_co-  00003930  lists         _TEXT         
+asi_dupl_va-  00003964  lists         _TEXT         
+asi_errmsg    000008B8  perr          _TEXT         
+asi_exe       000017F0  execute       _TEXT         
+asi_fbk       000014B0  fet           _TEXT         
+asi_fbr       000014E0  fet           _TEXT         
+asi_fet       00001498  fet           _TEXT         
+asi_fgets     00002298  sqlio         _TEXT         
+asi_fputs     000022F4  sqlio         _TEXT         
+asi_free      00001DEC  sqlalloc      _TEXT         
+asi_free_all  00001F14  sqlalloc      _TEXT         
+asi_free_ha-  00002F74  memutil       _TEXT         
+asi_free_me-  00001FEC  sqlalloc      _TEXT         
+asi_ftr       000014C8  fet           _TEXT         
+asi_get_col-  000029B4  sqlutil       _TEXT         
+asi_get_col-  0000274C  sqlutil       _TEXT         
+asi_get_err-  00007320  lexsql        _TEXT         
+asi_get_name  00002970  sqlutil       _TEXT         
+asi_get_ord-  00002A70  sqlutil       _TEXT         
+asi_get_tab-  00002894  sqlutil       _TEXT         
+asi_get_val-  000025EC  sqlutil       _TEXT         
+asi_getacad-  00000ABC  initsd        _TEXT         
+asi_getdire-  0000236C  sqlio         _TEXT         
+asi_geterrm-  00002D08  sqlutil       _TEXT         
+asi_getload-  000081F0  sqllink       _TEXT         
+asi_getoper-  000081E8  sqllink       _TEXT         
+asi_gets      000020E4  sqlstdio      _TEXT         
+asi_getsym    00006DE8  lexsql        _TEXT         
+asi_id        0001BDFE  lexsql        _BSS          
+asi_init_hdl  00003354  memutil       _TEXT         
+asi_init_lex  000072F0  lexsql        _TEXT         
+asi_initdrv   00000B88  initsd        _TEXT         
+asi_initpst-  00005FA4  conditio      _TEXT         
+asi_initsql   00000EF0  initsd        _TEXT         
+asi_initsst-  00006750  select        _TEXT         
+asi_inum      0001BCD8  lexsql        _BSS          
+asi_jmpbuf    0001BA70  alofree       _BSS          
+asi_jump_er-  000025D0  alofree       _TEXT         
+asi_lof       00001B0C  log           _TEXT         
+asi_lon       00001AA0  log           _TEXT         
+asi_lowend    000082B8  sqllink       _TEXT         
+asi_lowinit   000081F8  sqllink       _TEXT         
+asi_lseek     00002324  sqlio         _TEXT         
+asi_malloc    00001C38  sqlalloc      _TEXT         
+asi_memcmp    000021EC  sqlstdio      _TEXT         
+asi_ohdl      00001B48  log           _TEXT         
+asi_open      0000222C  sqlio         _TEXT         
+asi_openaca-  00000B50  initsd        _TEXT         
+asi_printf    00002048  sqlstdio      _TEXT         
+asi_read      00002280  sqlio         _TEXT         
+asi_realloc   00001EAC  sqlalloc      _TEXT         
+asi_rls_bind  00003250  memutil       _TEXT         
+asi_rls_col-  000030C0  memutil       _TEXT         
+asi_rls_col-  00003094  memutil       _TEXT         
+asi_rls_col-  0000318C  memutil       _TEXT         
+asi_rls_col-  00003048  memutil       _TEXT         
+asi_rls_cond  000032E8  memutil       _TEXT         
+asi_rls_grt   000031E8  memutil       _TEXT         
+asi_rls_out-  00003270  memutil       _TEXT         
+asi_rls_prv   000031AC  memutil       _TEXT         
+asi_rls_sel-  00003068  memutil       _TEXT         
+asi_rls_set-  00003290  memutil       _TEXT         
+asi_rls_tab-  00003104  memutil       _TEXT         
+asi_rls_tbl-  0000316C  memutil       _TEXT         
+asi_rls_val-  00003208  memutil       _TEXT         
+asi_rnum      0001BCD0  lexsql        _BSS          
+asi_set_add-  000036B8  lists         _TEXT         
+asi_set_com-  000025C0  alofree       _TEXT         
+asi_seterrm-  00002CE8  sqlutil       _TEXT         
+asi_strcmp    00002154  sqlstdio      _TEXT         
+asi_string    0001BCDE  lexsql        _BSS          
+asi_strlwr    00002128  sqlstdio      _TEXT         
+asi_strncmp   0000219C  sqlstdio      _TEXT         
+asi_strupr    000020FC  sqlstdio      _TEXT         
+asi_sym       0001BCDC  lexsql        _BSS          
+asi_termall-  00000EAC  initsd        _TEXT         
+asi_termdrv   00000E40  initsd        _TEXT         
+asi_termsql   00000EF8  initsd        _TEXT         
+asi_test_co-  00002C30  sqlutil       _TEXT         
+asi_testcon-  00002B88  sqlutil       _TEXT         
+asi_testque-  00002BC8  sqlutil       _TEXT         
+asi_ungetsym  000072B4  lexsql        _TEXT         
+asi_unlink    00002350  sqlio         _TEXT         
+asi_valtostr  0000150C  fet           _TEXT         
+asi_write     00002268  sqlio         _TEXT         
+asii__compi-  00018424  alofree       _DATA         
+asii_alofre-  00018420  alofree       _DATA         
+asip_addrbuf  00008AB4  transbuf      _TEXT         
+asip_allocb-  000089C8  transbuf      _TEXT         
+asip_closep-  0000899C  transbuf      _TEXT         
+asip_copy_f-  00008A8C  transbuf      _TEXT         
+asip_copy_t-  00008A58  transbuf      _TEXT         
+asip_get_pi-  000090A8  tapads        _TEXT         
+asip_get_str  00008B34  transbuf      _TEXT         
+asip_make_c-  00008D5C  transbuf      _TEXT         
+asip_make_v-  00008D14  transbuf      _TEXT         
+asip_openpi-  00008944  transbuf      _TEXT         
+asip_put_pi-  00008ECC  tapads        _TEXT         
+asip_put_str  00008ABC  transbuf      _TEXT         
+asip_trans_-  00008C7C  transbuf      _TEXT         
+asip_trans_-  00008B90  transbuf      _TEXT         
+atan          0000D658  atan          _TEXT         
+atexit        0000D624  atexit        _TEXT         
+chdir         00017610  chdir         _MWCHDIR_     
+close         00017618  close         _MWCLOSE_     
+cos           0000D674  sin           _TEXT         
+dragging      00019984  adsacad       @ADSACAD      
+errno         0001AE02  errno         ?_MWSTATUS    
+exit          0000B140  exit          _TEXT         
+fclose        0000C304  fclose        _TEXT         
+fflush        0000A8B8  fflush        _TEXT         
+fopen         0000A980  fopen         _TEXT         
+fprintf       0000AF30  printf        _TEXT         
+fputc         0000CBFC  fputc         _TEXT         
+fread         0000A994  fread         _TEXT         
+free          0000BED0  malloc        _TEXT         
+fseek         0000ABDC  fseek         _TEXT         
+ftell         0000CC80  ftell         _TEXT         
+fwrite        0000CD98  fwrite        _TEXT         
+get_cp_num    00016B5C  xmsg_rd       XMSG_RD       
+get_cp_str    00016BFC  xmsg_rd       XMSG_RD       
+getcwd        00017620  getcwd        _MWGETCWD_    
+getenv        0000B188  getenv        _TEXT         
+isalnum       0000B094  ctypef        _TEXT         
+isalpha       0000B044  ctypef        _TEXT         
+iscntrl       0000B0C8  ctypef        _TEXT         
+isdigit       0000B054  ctypef        _TEXT         
+isgraph       0000B0A4  ctypef        _TEXT         
+islower       0000B034  ctypef        _TEXT         
+isprint       0000B0B4  ctypef        _TEXT         
+ispunct       0000B084  ctypef        _TEXT         
+isspace       0000B074  ctypef        _TEXT         
+isupper       0000B024  ctypef        _TEXT         
+isxdigit      0000B064  ctypef        _TEXT         
+itoa          00017628  itoa          _MWITOA_      
+locked_head   0001AC40  xmsg_rd       @XMSG_RD      
+locked_last   0001AC44  xmsg_rd       @XMSG_RD      
+longjmp       00017302  setjmp        _MWSETJMP_    
+lseek         00017630  lseek         _MWLSEEK_     
+main          00000000  asitest       _TEXT         
+malloc        0000BCC4  malloc        _TEXT         
+memchr        000173D8  memchr        _MWMEMCHR     
+memcmp        000173FC  memcmp        _MWMEMCMP     
+mng_addgrou-  0000A5FC  mnger         _TEXT         
+mng_closeli-  0000A1B0  mnger         _TEXT         
+mng_delgrou-  0000A69C  mnger         _TEXT         
+mng_geterror  0000A010  mnger         _TEXT         
+mng_getlink   0000A568  mnger         _TEXT         
+mng_getlnkb-  0000A560  mnger         _TEXT         
+mng_getrbuf-  0000A558  mnger         _TEXT         
+mng_getrmod-  0000A5D8  mnger         _TEXT         
+mng_initgro-  0000A72C  mnger         _TEXT         
+mng_initlink  0000A018  mnger         _TEXT         
+mng_saveact-  0000A3A4  mnger         _TEXT         
+mng_setactm-  0000A264  mnger         _TEXT         
+mq            0001A85C  adsli         @ADSLI        
+mqdelete      00014B9C  adsacad       ADSACAD       
+mqnew         00014B48  adsacad       ADSACAD       
+open          00017638  open          _MWOPEN_      
+printf        0000AF68  printf        _TEXT         
+read          00017640  read          _MWREAD_      
+realloc       0000BF80  malloc        _TEXT         
+remove        000173AC  _unlink       _MWLIB        
+setjmp        000172D8  setjmp        _MWSETJMP_    
+setvbuf       0000D4EC  setvbuf       _TEXT         
+sin           0000D668  sin           _TEXT         
+sprintf       0000AFE0  sprintf       _TEXT         
+strchr        0000C0B4  strchr        _TEXT         
+strcpy        00017340  strcpy        _MWSTRCPY     
+strlen        00017370  strlen        _MWSTRLEN     
+strncmp       0000C0E8  strncmp       _TEXT         
+strncpy       0000C11C  strncpy       _TEXT         
+strstr        0000C180  strstr        _TEXT         
+strtod        0000E1A8  strtod        _TEXT         
+strtok        0000C208  strtok        _TEXT         
+tolower       0000B10C  ctypef        _TEXT         
+toupper       0000B0F4  ctypef        _TEXT         
+unlink        00017648  unlink        _MWUNLINK_    
+vfprintf      0000AF18  printf        _TEXT         
+vprintf       0000AF4C  printf        _TEXT         
+vsprintf      0000AFB8  sprintf       _TEXT         
+write         00017650  write         _MWWRITE_     
+xmsg_alive    00016B54  xmsg_rd       XMSG_RD       
+xmsg_info     000166D8  xmsg_rd       XMSG_RD       
+xmsg_info_c-  000166C8  xmsg_rd       XMSG_RD       
+xmsg_info_l-  000166D0  xmsg_rd       XMSG_RD       
+
+
+Unresolved external reference(s):
+
+     _HugeValue
+     __CHP
+     _setjmp
+     callp386
+     getminalloc
+     mng_allocatemsdos
+     mng_allocatesegment
+     mng_bufcpy
+     mng_bufsize
+     mng_callrealfcn
+     mng_farcall
+     mng_freemsdos
+     mng_freesegment
+     mng_getcs
+     mng_getds
+     mng_getrealenv
+     mng_getrealmcbpsp
+     mng_getrealmcbsize
+     mng_getswitchep
+     mng_int21
+     mng_loadreal
+     mng_setmyds
+     mng_setrealmcbsize
+     mng_setswitchstack
+     setminalloc

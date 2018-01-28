@@ -1,0 +1,4 @@
+-r obj\layerc.obj 
+obj\llistman.obj 
+obj\alloc.obj
+

@@ -1,0 +1,103 @@
+/*----------------------------------------------------------------------------
+alistman.doc
+
+AutoCad resbuf * list utility routines docs
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+struct resbuf *a_car(struct resbuf *head)
+struct resbuf *a_find(struct resbuf *head, int nth)
+struct resbuf *a_cdr(struct resbuf *head)
+struct resbuf *a_last(struct resbuf *head)
+struct resbuf *a_cons(struct resbuf *elem, struct resbuf *list)
+struct resbuf *a_append(struct resbuf *elem, struct resbuf *list)
+int a_swap(struct resbuf *head, struct resbuf *item1, struct resbuf *item2)
+int a_delete(struct resbuf *head, struct resbuf *item)
+int a_add(struct resbuf *addpt, struct resbuf *item)
+
+
+Function description:
+
+-----------------------------------------------------------------------------
+Function:       struct resbuf *a_car(struct resbuf *head)
+Description:    returns the first element in the list head
+                The returned pointer is a seperately created list. It does
+                not share data from the passed list.
+                Handles nested lists.
+Arguments:      head is the resbuf list to be searched
+Returns:        pointer to list representing first element of head
+                If list is empty, returns resbuf of type RTNIL
+-----------------------------------------------------------------------------
+Function:       struct resbuf *a_find(struct resbuf *head, int nth)
+Description:    Returns a pointer to the nth item in list.
+                Handles nested lists.
+Arguments:      head is the resbuf list to be searched
+                nth is the element to search for. nth is indexed from 0.
+Returns:        pointer to nth item in list head
+                if nth element out of bounds, returns resbuf of type RTNIL
+-----------------------------------------------------------------------------
+Function:       struct resbuf *a_cdr(struct resbuf *head)
+Description:    Returns a pointer to all but the first item in list.
+                The returned pointer is a seperately created list. It does
+                not share data from the passed list.
+                Handles nested lists.
+Arguments:      head is the resbuf list to be searched
+Returns:        pointer to list representing cdr of list head
+                If list is empty, returns resbuf of type RTNIL
+-----------------------------------------------------------------------------
+Function:       struct resbuf *a_last(struct resbuf *head)
+Description:    Returns a pointer to the last item in list head.
+                Handles nested lists.
+Arguments:      head is the resbuf list to be searched
+Returns:        pointer to last element of list head
+                If list is empty, returns resbuf of type RTNIL
+-----------------------------------------------------------------------------
+Function:       struct resbuf *a_cons(struct resbuf *elem, struct resbuf *list)
+Description:    Returns a pointer to a list comprising of list with the 
+                addition of elem at the start of the list.
+                The returned pointer is a seperately created list. It does
+                not share data from the passed list.
+                Handles nested lists.
+Arguments:      elem is the list comprising the new first element
+                list is the list to which elem will be added
+Returns:        pointer to list representing cons of list head with first 
+                element elem
+-----------------------------------------------------------------------------
+Function:       struct resbuf *a_append(struct resbuf *elem, struct resbuf *list)
+Description:    Returns a pointer to a list comprising of list with the 
+                addition of elem at the end of the list.
+                The returned pointer is a seperately created list. It does
+                not share data from the passed list.
+                Handles nested lists.
+Arguments:      elem is the list comprising the new last element(s)
+                list is the list to which elem will be appended
+Returns:        pointer to list representing appending of elem to list
+-----------------------------------------------------------------------------
+Function:       int a_swap(struct resbuf *head, struct resbuf *item1, struct resbuf *item2)
+Description:    Swaps elements item1 and item2. Nested lists are NOT 
+                treated as a single element.
+Arguments:      head is the resbuf list to be searched
+                item1 is the first element to be swapped
+                item2 is the second element to be swapped
+Returns:        LIST_OK
+                LIST_ERR one or both of the elements to be swapped do
+                not exist in the list.
+-----------------------------------------------------------------------------
+Function:       int a_delete(struct resbuf *head, struct resbuf *item)
+Description:    Deletes the element item from the list head. 
+                Nested lists are NOT treated as a single element                
+Arguments:      head is the resbuf list to be searched
+                item is the element to be deleted
+Returns:        LIST_OK
+                LIST_ERR the element to be deleted do not exist in the list.
+-----------------------------------------------------------------------------
+Function:       int a_add(struct resbuf *addpt, struct resbuf *item)
+Description:    Adds element(s) item after position addpt.
+                Nested lists are NOT treated as a single element                
+Arguments:      addpt is the resbuf after which item is to be added
+                item is the element(s) to be added
+Returns:        LIST_OK
+                LIST_ERR the element to be deleted do not exist in the list.
+-----------------------------------------------------------------------------

@@ -1,0 +1,66 @@
+From:   Jeff Hill
+        Cad Systems Australia P/L
+        Brisbane        QLD
+        Australia
+
+Topic:          Problems with ADS Debugging using 
+                Metaware Source Debugger under DOS
+Machine:        486DX33 with 8Mb RAM
+Compiler:       Metaware C/C++ v3.01
+
+I am having difficulty getting the Metaware C/C++ debugger v1.3
+to work under AUTOCAD Release 12. The version of Autocad uses the
+default settings as installed from floppy.
+
+The relevant statements in AUTOEXEC.BAT are as follows:
+
+path c:\dos;c:\bin;c:\phar386\bin;c:\highc\bin;c:\acad12;c:\bin\xtg;c:\brief
+set acad=c:\acad12;c:\acad12\support;c:\acad12\fonts;c:\acad12\ads
+set acadcfg=c:\acad12
+set acaddrv=c:\acad12\drv
+set dosx=-priv
+set expdebug=ads
+set ACADPATH=c:\acad12
+set ADS_VERSION=12
+
+The switches for compilation are:
+
+-DDEBUG_ADS
+-f387
+-Hads
+-Hloc
+-Ic:\acad12\ads
+-Iinc
+-o
+-Hansi
+-lc:\acad12\ads\ads.lib
+-g
+
+I followed the notes on debugging contained in the file
+\acad\ads\docs\highc.txt which came with Autocad as well as the
+documentation that came with the compiler.
+
+Basically, I can get to the point of setting the breakpoint at main() for
+my ADS application (and other modules), and typing GO, but the debugger
+never breaks to return control. The program does continue to run correctly.
+
+I calculated the breakpoint address by:
+
+Typing &main to get offset (always returns CS:0000)
+
+The selector code on autocad startup is 94. 
+
+Thus I set a breakpoint:
+b 0 = 0x94:0x0000
+b 1 = 0x94:0x01f8 (another function)
+and type GO
+
+The debugger will never break, and control will only return when I quit
+Autocad.
+
+Another problem !! 
+When the Autocad screen is at a resolution of 800 x 600 (16 colors)
+the top portion of the screen is corrupted. 640 x 480 seems to work ok.
+
+Any solutions?
+

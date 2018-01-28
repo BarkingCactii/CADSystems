@@ -1,0 +1,16 @@
+-r obj\dextx.obj 
+obj\dmain.obj 
+obj\llistman.obj 
+obj\alloc.obj 
+obj\geom.obj 
+obj\dsort.obj 
+obj\dmkline.obj 
+obj\dinterp.obj 
+obj\mettoimp.obj 
+obj\imptomet.obj 
+obj\dcross.obj 
+obj\alistman.obj 
+obj\dtxtwid.obj 
+obj\drepeat.obj
+obj\env.obj
+obj\dtxtx.obj

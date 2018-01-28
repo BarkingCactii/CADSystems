@@ -1,0 +1,285 @@
+386|LINK: 4.1 -- Copyright (C) 1986-91 Phar Lap Software, Inc.
+Target CPU is 80386
+
+
+Command line switches:
+
+-pack -twocase @058c0000.lnk
+
+prime.obj 
+-lib C:\HIGHC\small\hcc386.lib 
+-lib C:\HIGHC\small\hcc387.lib 
+-lib C:\HIGHC\small\hc386.lib 
+-lib C:\HIGHC\small\hc387.lib 
+-lib C:\HIGHC\small\hcna.lib 
+
+
+
+Input module(s):
+
+"prime" from file "prime.obj".
+"printf" from file "C:\HIGHC\small\hc386.lib".
+"386gocd" from file "C:\HIGHC\small\hc386.lib".
+"386x87u" from file "C:\HIGHC\small\hc386.lib".
+"argstk3" from file "C:\HIGHC\small\hc386.lib".
+"fltu" from file "C:\HIGHC\small\hc386.lib".
+"init" from file "C:\HIGHC\small\hc386.lib".
+"_iob" from file "C:\HIGHC\small\hc386.lib".
+"fwrite" from file "C:\HIGHC\small\hc386.lib".
+"_mwint21" from file "C:\HIGHC\small\hc386.lib".
+"arg" from file "C:\HIGHC\small\hc386.lib".
+"cinit" from file "C:\HIGHC\small\hc386.lib".
+"doentry" from file "C:\HIGHC\small\hc386.lib".
+"init_87" from file "C:\HIGHC\small\hc386.lib".
+"osmajor" from file "C:\HIGHC\small\hc386.lib".
+"small" from file "C:\HIGHC\small\hc386.lib".
+"exit" from file "C:\HIGHC\small\hc386.lib".
+"_finit" from file "C:\HIGHC\small\hc386.lib".
+"_flush" from file "C:\HIGHC\small\hc386.lib".
+"_write" from file "C:\HIGHC\small\hc386.lib".
+"fflush" from file "C:\HIGHC\small\hc386.lib".
+"_cleanup" from file "C:\HIGHC\small\hc386.lib".
+"atexit" from file "C:\HIGHC\small\hc386.lib".
+"fclose" from file "C:\HIGHC\small\hc386.lib".
+"__write" from file "C:\HIGHC\small\hc386.lib".
+"_close" from file "C:\HIGHC\small\hc386.lib".
+"_fill" from file "C:\HIGHC\small\hc386.lib".
+"_isatty" from file "C:\HIGHC\small\hc386.lib".
+"_lseek" from file "C:\HIGHC\small\hc386.lib".
+"_unlink" from file "C:\HIGHC\small\hc386.lib".
+"setvbuf" from file "C:\HIGHC\small\hc386.lib".
+"errno" from file "C:\HIGHC\small\hc386.lib".
+"malloc" from file "C:\HIGHC\small\hc386.lib".
+"memchr" from file "C:\HIGHC\small\hc386.lib".
+"__close" from file "C:\HIGHC\small\hc386.lib".
+"__lseek" from file "C:\HIGHC\small\hc386.lib".
+"_cputs" from file "C:\HIGHC\small\hc386.lib".
+"_read" from file "C:\HIGHC\small\hc386.lib".
+"fputc" from file "C:\HIGHC\small\hc386.lib".
+"_seterr" from file "C:\HIGHC\small\hc386.lib".
+"_ultoa" from file "C:\HIGHC\small\hc386.lib".
+"abort" from file "C:\HIGHC\small\hc386.lib".
+"getenv" from file "C:\HIGHC\small\hc386.lib".
+"__read" from file "C:\HIGHC\small\hc386.lib".
+"_doserno" from file "C:\HIGHC\small\hc386.lib".
+"_doserr" from file "C:\HIGHC\small\hc386.lib".
+"_strrev" from file "C:\HIGHC\small\hc386.lib".
+"memcmp" from file "C:\HIGHC\small\hc386.lib".
+"fmod" from file "C:\HIGHC\small\hc387.lib".
+"mwtrunc" from file "C:\HIGHC\small\hc387.lib".
+"387u" from file "C:\HIGHC\small\hc387.lib".
+"87only" from file "C:\HIGHC\small\hc387.lib".
+"_doprint" from file "C:\HIGHC\small\hc387.lib".
+"float" from file "C:\HIGHC\small\hc387.lib".
+"_doecvt" from file "C:\HIGHC\small\hc387.lib".
+"ld10" from file "C:\HIGHC\small\hc387.lib".
+"_pow10" from file "C:\HIGHC\small\hc387.lib".
+"_round" from file "C:\HIGHC\small\hc387.lib".
+"_itos" from file "C:\HIGHC\small\hc386.lib".
+"_stoi" from file "C:\HIGHC\small\hc386.lib".
+"ctype" from file "C:\HIGHC\small\hc386.lib".
+
+
+Segment map
+
+     Name         Group         Class     Type   Offset     Size
+------------  ------------  ------------  ----  --------  --------
+_TEXT         CGROUP        CODE          PUB   00000000  00003494
+?INIT         CGROUP        CODE          PVT   00003494  00000661
+_MW_MWINT21_  CGROUP        CODE          PVT   00003AF8  00000003
+_MW__WRITE    CGROUP        CODE          PVT   00003AFC  00000037
+_MW_ISATTY_   CGROUP        CODE          PVT   00003B34  00000020
+_MWLIB        CGROUP        CODE          PVT   00003B54  00000025
+_MWMEMCHR     CGROUP        CODE          PVT   00003B7C  00000021
+_MW__CLOSE    CGROUP        CODE          PVT   00003BA0  0000002B
+_MW__LSEEK    CGROUP        CODE          PVT   00003BCC  00000037
+_MW_CPUTS     CGROUP        CODE          PVT   00003C04  00000020
+_MW_MW_ERRN-  CGROUP        CODE          PVT   00003C24  0000001E
+_MW__READ     CGROUP        CODE          PVT   00003C44  0000002F
+_MWMEMCMP     CGROUP        CODE          PVT   00003C74  00000049
+_MWTRUNC      CGROUP        CODE          PVT   00003CC0  00000031
+_DATA         DGROUP        DATA          PUB   00003CF4  000011DC
+_MWFLOATER                  DATA          COM   00004ED0  00000001
+_MWIFC        DGROUP        DATA          PUB   00004ED2  00000000
+_MWIMC        DGROUP        DATA          PUB   00004ED2  0000000C
+_MWILC        DGROUP        DATA          PUB   00004EDE  00000000
+_MWLTCONV     DGROUP        DATA          COM   00004EE0  00000008
+_MWDFC        DGROUP        DATA          PUB   00004EE8  00000000
+_MWDMC        DGROUP        DATA          PUB   00004EE8  00000000
+_MWDLC        DGROUP        DATA          PUB   00004EE8  00000000
+DSEG          DGROUP        DATA          PVT   00004EE8  00000092
+?_MWSTATUS    DGROUP        DATA          COM   00004F7C  00000008
+TRDATA        DGROUP        DATA          PUB   00004F84  0000000C
+_DATA1        DGROUP        DATA          PUB   00004F90  00000030
+CONST         DGROUP        CONST         PUB   00004FC0  000003CE
+_BSS          DGROUP        BSS           PUB   00005390  00000000
+_EBSS_        DGROUP        BSS           PUB   00005390  00000000
+c_common      DGROUP        BSS           PUB   00005390  00000000
+?STACK        DGROUP        STACK         STK   00005390  00002000
+
+
+Public symbols
+
+     Name       Value      Module        Segment      Size
+------------  --------  ------------  ------------  --------
+SMALL?        00004ED0  small         _MWFLOATER    
+__close       00003BA0  __close       _MW__CLOSE    
+__lseek       00003BCC  __lseek       _MW__LSEEK    
+__main        00003499  init          ?INIT         
+__mwdfc       00004EE8  init          _MWDFC        
+__mwdlc       00004EE8  init          _MWDLC        
+__read        00003C44  __read        _MW__READ     
+__write       00003AFC  __write       _MW__WRITE    
+_alignment_-  000046B8  malloc        _DATA         
+_base         00004EFA  init          DSEG          
+_bufendtab    000044D0  _iob          _DATA         
+_c_exit       00000B70  _cleanup      _TEXT         
+_cannot_mix-  00004ED0  argstk3       _MWFLOATER    
+_cannot_mix-  00004ED0  ld10          _MWFLOATER    
+_cannot_mix-  00004ED0  387u          _MWFLOATER    
+_cannot_mix-  00004ED0  87only        _MWFLOATER    
+_cexit        00000B68  _cleanup      _TEXT         
+_check_heap   000016CC  malloc        _TEXT         
+_cinit        00000420  cinit         _TEXT         
+_cleanup      00000B3C  _cleanup      _TEXT         
+_close        00000CB4  _close        _TEXT         
+_cnvi2s       00003264  _itos         _TEXT         
+_cnvn2s       00003168  _itos         _TEXT         
+_cnvp2s       000032A8  _itos         _TEXT         
+_cnvs2i       00003334  _stoi         _TEXT         
+_cnvs2n       0000339C  _stoi         _TEXT         
+_cnvs2p       0000347C  _stoi         _TEXT         
+_cnvs2u       000032C0  _stoi         _TEXT         
+_cnvu2s       0000324C  _itos         _TEXT         
+_compare      00003C74  memcmp        _MWMEMCMP     
+_cputs        00003C04  _cputs        _MW_CPUTS     
+_ctype_       0000528C  ctype         CONST         
+_doecvt       00002E0C  _doecvt       _TEXT         
+_doprint      000021E4  _doprint      _TEXT         
+_doserr       00004B4C  _doserr       _DATA         
+_doserrno     00004B48  _doserno      _DATA         
+_dump_heap    000013D8  malloc        _TEXT         
+_edata        00005390                _BSS          
+_end          00005390                c_common      
+_exit         00003A70  init          ?INIT         
+_exitv        0000461C  _cleanup      _DATA         
+_fill         00000CE8  _fill         _TEXT         
+_finit        000006F8  _finit        _TEXT         
+_flush        000007D4  _flush        _TEXT         
+_fmode        000045CC  _iob          _DATA         
+_fopen_max    000040E4  _iob          _DATA         
+_fpecvt       00002C58  float         _TEXT         
+_fpepsd       00004C80  float         _DATA         
+_fpepsf       00004C68  float         _DATA         
+_fpepsl       00004C74  float         _DATA         
+_fpexpo       00002CD4  float         _TEXT         
+_fphuge       00004C5C  float         _DATA         
+_fpmaxd       00004CC8  float         _DATA         
+_fpmaxf       00004CB0  float         _DATA         
+_fpmaxl       00004CBC  float         _DATA         
+_fpmind       00004CA4  float         _DATA         
+_fpminf       00004C8C  float         _DATA         
+_fpminl       00004C98  float         _DATA         
+_fpodd        00002D1C  float         _TEXT         
+_fpoddf       00002CE8  float         _TEXT         
+_fptrn        00002DA8  float         _TEXT         
+_fptrnf       00002D70  float         _TEXT         
+_gda          00004F16  init          DSEG          
+_iob          000040E8  _iob          _DATA         
+_iob_fioflag  00004598  _iob          _DATA         
+_iob_tmpnam   00003CFC  _iob          _DATA         
+_iob_unget    00003DC4  _iob          _DATA         
+_isatty       00003B34  _isatty       _MW_ISATTY_   
+_lseek        00000DAC  _lseek        _TEXT         
+_must_link_-  00004ED0  387u          _MWFLOATER    
+_must_link_-  00004ED0  387u          _MWFLOATER    
+_mw1167       00004F47  init          DSEG          
+_mw387        00004F3D  init          DSEG          
+_mw8087       00004F31  init          DSEG          
+_mw87_used    00004ED0  386x87u       _MWFLOATER    
+_mw87only     00004ED0  87only        _MWFLOATER    
+_mwCPU        00004EEC  init          DSEG          
+_mwINIT       00003494  init          ?INIT         
+_mwOS         00004EED  init          DSEG          
+_mw_errnoset  00003C24  _seterr       _MW_MW_ERRN-  
+_mwarglen     00004F26  init          DSEG          
+_mwargp       00004F1A  init          DSEG          
+_mwargstack   00004ED0  argstk3       _MWFLOATER    
+_mwargvp      00004F20  init          DSEG          
+_mwcall_one-  000038B2  init          ?INIT         
+_mwclear_bss  00003892  init          ?INIT         
+_mwcontract-  00003A7C  init          ?INIT         
+_mwdefault_-  00004934  abort         _DATA         
+_mwdo_ctors   00000520  doentry       _TEXT         
+_mwdo_ultoa   00001D70  _ultoa        _TEXT         
+_mwemc87      00004F49  init          DSEG          
+_mwenv        00004F70  init          DSEG          
+_mwenvip      00004B44  getenv        _DATA         
+_mwenvp       00004F2A  init          DSEG          
+_mwes         00004EF0  init          DSEG          
+_mwexpand_h-  00003942  init          ?INIT         
+_mwfltused    00004ED0  fltu          _MWFLOATER    
+_mwgetcs      00003A6B  init          ?INIT         
+_mwgetds      00003A66  init          ?INIT         
+_mwgetenv2    0000208C  getenv        _TEXT         
+_mwgoc        00004ED0  386gocd       _MWFLOATER    
+_mwgsel       00004EEE  init          DSEG          
+_mwheap_exp-  00004F75  init          DSEG          
+_mwinit_387u  000005A3  init_87       _TEXT         
+_mwinit_87    0000058C  init_87       _TEXT         
+_mwinit_87u   00000593  init_87       _TEXT         
+_mwinit_con-  0000366F  init          ?INIT         
+_mwinit_emc-  000005B3  init_87       _TEXT         
+_mwinit_env-  00003693  init          ?INIT         
+_mwinit_ver   00004F73  init          DSEG          
+_mwinput      00004EE8  init          DSEG          
+_mwint21      00003AF8  _mwint21      _MW_MWINT21_  
+_mwis_286     00004F30  init          DSEG          
+_mwldouble10  00004ED0  ld10          _MWFLOATER    
+_mwno87       00004F59  init          DSEG          
+_mwoops       000045E6  init_87       _DATA         
+_mwoutput     00004EEA  init          DSEG          
+_mwprintnoc-  00004F72  init          DSEG          
+_mwprognamep  00004F64  init          DSEG          
+_mwset_stac-  00003A60  init          ?INIT         
+_mwset_up_a-  00000330  arg           _TEXT         
+_mwss         00003A63  init          ?INIT         
+_mwstack_li-  00003CF4  init          _DATA         
+_mwtrunc_     00003CC0  mwtrunc       _MWTRUNC      
+_mwtruncu_    00003CC0  mwtrunc       _MWTRUNC      
+_mwwind       00004F71  init          DSEG          
+_osmajor      00004618  osmajor       _DATA         
+_osminor      00004619  osmajor       _DATA         
+_osversion    00004618  osmajor       _DATA         
+_pmode        000045D0  _iob          _DATA         
+_pow10        00003120  _pow10        _TEXT         
+_psp          00004EF0  init          DSEG          
+_read         00001B50  _read         _TEXT         
+_round        00004DA4  _round        _DATA         
+_strrev       000020B0  _strrev       _TEXT         
+_top          00004EF6  init          DSEG          
+_ultoa        00001DE4  _ultoa        _TEXT         
+_unlink       00003B54  _unlink       _MWLIB        
+_write        0000091C  _write        _TEXT         
+abort         00001E04  abort         _TEXT         
+atexit        00000B90  atexit        _TEXT         
+errno         00004F7E  errno         ?_MWSTATUS    
+exit          000006B0  exit          _TEXT         
+fclose        00000BC4  fclose        _TEXT         
+fflush        00000A74  fflush        _TEXT         
+fmod          000020EC  fmod          _TEXT         
+fprintf       000000F4  printf        _TEXT         
+fputc         00001D3C  fputc         _TEXT         
+free          0000196C  malloc        _TEXT         
+fwrite        00000148  fwrite        _TEXT         
+getenv        00001E18  getenv        _TEXT         
+main          00000000  prime         _TEXT         
+malloc        00001760  malloc        _TEXT         
+memchr        00003B7C  memchr        _MWMEMCHR     
+memcmp        00003C74  memcmp        _MWMEMCMP     
+printf        0000012C  printf        _TEXT         
+realloc       00001A1C  malloc        _TEXT         
+remove        00003B54  _unlink       _MWLIB        
+setvbuf       00000DDC  setvbuf       _TEXT         
+vfprintf      000000DC  printf        _TEXT         
+vprintf       00000110  printf        _TEXT         

@@ -1,0 +1,36 @@
+/*----------------------------------------------------------------------------
+mettoimp.doc
+
+Metric to imperial conversion docs
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+int metric_to_impstr(char *, double, int)
+
+
+Function description:
+
+-----------------------------------------------------------------------------
+Function        int metric_to_impstr(char *impstr, double mills, int method)
+Description:    Converts a decimal measurement miils (expressed as
+                millimetres) and outputs an imperial equivalent a string 
+                to impstr in the format described in method. 
+                impstr must be allocated prior to calling this function. 
+                The valid methods are:
+
+                IMP_FORMAT_1 produces impstr in  aa'b-cc/dd format
+                IMP_FORMAT_2 produces impstr in  aa'b~c     format
+                IMP_FORMAT_3 produces impstr in  aa'b.c     format    
+                
+Arguments:      impstr is where the string in imperial will be copied to
+                mills is the decimal value in millimetres to be converted
+                method is the method of formatting for the resulting string
+Returns:        IMPCV_OK  ok
+                IMPCV_ERR a format could not be found to suit the measurment
+                or an invalid method was passed
+-----------------------------------------------------------------------------
+
+
+

@@ -1,0 +1,3 @@
+-r obj\llistman.obj
+obj\alloc.obj
+

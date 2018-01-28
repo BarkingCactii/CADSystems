@@ -1,0 +1,70 @@
+/*----------------------------------------------------------------------------
+m_hshtbl.doc
+
+Member stats data access
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+int mf_open()
+void mf_close()
+int mf_add(char *key, MEMBER_STATS *m)
+int mf_modify(char *olds, char *news, MEMBER_STATS *m)
+int mf_search(char *key, MEMBER_STATS *s)
+int mf_delete(char *key)
+void mf_dump()
+
+-----------------------------------------------------------------------------
+Function:       int mf_open()
+Description:    Determines the appropriate member stats file, opens it
+                and sets up the hash table. If the file doesn't exist,
+                the file and hash table are created. This call must be
+                balanced with mf_close() and be the first and last calls
+                to this module respectively, otherwise unpredictable
+                results will occur.
+Arguments:      None
+Returns:        TRUE - ok
+                FALSE - the file could not be opened
+-----------------------------------------------------------------------------
+Function:       int mf_add(char *key, MEMBER_STATS *s)
+Description:    Adds a member structure into the member stats file.
+                If the key doesn't exist a new record is added to the member 
+                stats file. If it does, then the existing record is replaced.
+                This is a easy method of assuring that no key will be
+                duplicated, and that this function acts in a Add/Replace
+                capacity.
+Arguments:      key - the key which will determine the position in the file
+                the data will be stored. This is the member description (a string)
+Returns:        TRUE - ok
+                FALSE - data not written to disk
+-----------------------------------------------------------------------------
+Function:       int mf_modify(char *olds, char *news, MEMBER_STATS *m)
+Description:    Modifies the key olds of an existing record to the new key
+                news and modifies the data stored on file with m.
+Arguments:      olds - key of existing record on file
+                news - the new key for record m
+                m - the new data to be saved to disk
+Returns:        TRUE - ok
+                FALSE - data not written to disk
+-----------------------------------------------------------------------------
+Function:       int mf_search(char *key, MEMBER_STATS *s)
+Description:    Searches the member file for a record matching key. If the
+                key is found, the record is read and its contents placed in m
+Arguments:      key - the key of the record in the member stats file
+                s - pointer to where data will be loaded to
+Returns:        TRUE - record found
+                FALSE - record not found
+-----------------------------------------------------------------------------
+Function:       int mf_delete(char *key)
+Description:    Searches the member file for a record matching key and
+                deletes it.
+Arguments:      key - the key of the record in the member stats file
+Returns:        TRUE - record deleted
+                FALSE - key not found, record not deleted
+-----------------------------------------------------------------------------
+Function:       void mf_dump()                           DEBUGGING
+Description:    Dump the hash table in hash order and sorted order
+Arguments:      None
+Returns:        None
+-----------------------------------------------------------------------------

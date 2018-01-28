@@ -1,0 +1,32 @@
+/*----------------------------------------------------------------------------
+imptomet.doc
+
+Imperial to Metric conversion docs
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+int impstr_to_metric(char *impstr, double *mills)
+
+
+Function description:
+
+-----------------------------------------------------------------------------
+Function        int impstr_to_metric(char *impstr, double *mills)
+Description:    Converts a string expressed as a imperial measurement
+                and converts it to millimetres.
+                
+                Valid formats are:
+
+                aa'b-cc/dd
+                aa'b~c    
+                aa'b.c        
+
+Arguments:      impstr is the string expressed in imperial notation to be converted
+                mills is an address to a double to contain the result in 
+                millimetres
+Returns:        IMPCV_OK  ok
+                IMPCV_ERR if impstr is too large to be processed or
+                impstr is in an invalid format
+-----------------------------------------------------------------------------

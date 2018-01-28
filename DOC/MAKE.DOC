@@ -1,0 +1,1584 @@
+
+
+
+
+
+
+
+                               NDMAKE version 4.3
+                               ------------------
+                     Copyright (C) 1985, 1986 D. G. Kneller
+                              All rights reserved.
+
+
+     Table of contents
+     -----------------
+
+          
+
+     Introduction....................................................2
+     Requirements....................................................2
+     Synopsis........................................................3
+     Make description files..........................................3
+     Dependency and command lines....................................3
+     Macros..........................................................5
+     Default rules...................................................7
+     "dot targets" .IGNORE, .PRECIOUS, .SILENT, .SUFFIXES............8
+     Command prefixes -, @, !, >, >>.................................8
+         The loop prefix `!'.........................................9
+         Output to files `>' and `>>'................................9
+     VPATH..........................................................10
+     Options........................................................12
+     DOS commands, batch files, redirection and error codes.........13
+     Response files -- special handling of LINK and LIB.............14
+         1) LINK response files.....................................14
+         2) LIB response files......................................14
+     UNIX features..................................................15
+     Additional notes and technical information.....................16
+     Sample session.................................................17
+     Use of flags -t, -i, -n, -d, and -p............................19
+     Using MAKE without a makefile..................................20
+     Changes since version 3.0......................................21
+     Changes since version 4.0......................................21
+     Future directions for NDMAKE...................................22
+     USER-SUPPORTED SOFTWARE NOTIFICATION...........................23
+     Registration form for NDMAKE...................................24
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 2
+
+
+
+
+
+     Introduction
+     ------------
+
+     NDMAKE is an implementation of the UNIX(tm) program maintenance
+     utility called `make'.  It has the same syntax and all of the
+     capability.  If you are familiar with UNIX `make' you should have no
+     difficulties with NDMAKE.  Please note that NDMAKE is user supported
+     software.  Some advanced features have been disabled in the demo
+     version of NDMAKE.  Details for registering your copy are at the end
+     of this documentation.  In the rest of this documentation, NDMAKE will
+     often be referred to simply as MAKE.
+
+     MAKE is a utility that helps you maintain programs, particularly
+     programs that are composed of several modules (files).  MAKE has
+     several features that make it very useful for software development:
+
+     1) Once you describe the relationships between modules, MAKE will keep
+     track of them and only `make' those that are out of date with respect
+     to their sources.  You don't waste time figuring out which files
+     you've changed, which have to be recompiled, how to link them, ...
+
+     2) Automatic response files for LINK and LIB.  Under MSDOS(tm),
+     commands must be shorter than the command line limit of 128
+     characters.  Since LINK is used often when doing modular programming,
+     MAKE knows about it specially and will automatically generate a
+     response file if the LINK command is longer than the limit.  MAKE will
+     do a similar thing with LIB.  See the section entitled "Response
+     files" for details.
+
+     3) Detection of errors when running internal DOS commands.  Previous
+     versions of NDMAKE couldn't detect errors when DOS commands were run
+     or when IO redirection occurred because COMMAND.COM doesn't return a
+     proper error code (for DOS < 3.0).
+
+     4) VPATH.  Often when doing program development you want to create
+     several slightly different versions of a program, but keep a common
+     set of sources.  For example, you may have to create machine specific
+     or memory model specific modules.  Using the VPATH feature of MAKE it
+     is possible to have sources in directories different from the current
+     directory and have MAKE find them.  Actually, VPATH is more powerful
+     (and complex) then that, so please see the VPATH section for details.
+
+
+     Requirements
+     ------------
+
+     MAKE requires at least DOS 2.0 and uses a minimum of about 42000 bytes
+     of memory.  Since MAKE executes other programs from within itself,
+     this memory will be unavailable to them while MAKE is running.  Also,
+     MAKE uses the file time to determine which files are newer than others
+     so it is imperative that you either have a real-time clock or are
+     diligent about setting the time and date when you boot up.
+
+
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 3
+
+
+
+
+
+     Synopsis
+     --------
+
+          make [ -f makefile ] [ options ] [ macros ] [ targets ]
+     
+     The [ ] delimit optional parameters.  [ options ] and [ macros ] will
+     be discussed later.
+
+     MAKE executes commands in a MAKE description file to update one or
+     more targets.  The targets are typically the names of programs.  If no
+     -f option is present, the MAKE description file called `MAKEFILE' is
+     tried.  If makefile is `-', the keyboard (standard input) is used as
+     the makefile.  More than one -f option may appear.
+
+     Make updates a target if it is older than the files it depends on, or
+     if the target does not exist.  If no targets are given on the command
+     line, the first target in the makefile is `made'.
+
+
+     MAKE description files
+     ----------------------
+
+     MAKE uses 2 description files:  MAKE.INI and makefile.  The
+     description files consist of several entries:
+     
+          1) dependency and command lines
+          2) macro definitions
+          3) default rules
+          4) "dot commands"
+     
+     When MAKE starts up, it looks for an initialization file called
+     MAKE.INI.  This file usually contains only default rules and macro
+     definitions that you don't want to put in every makefile.  The current
+     directory is searched first, followed by directories along the PATH.
+     You customize your copy of MAKE by changing MAKE.INI.
+
+     
+
+
+     1) Dependency and command lines
+     -------------------------------
+
+     These are lines that specify the relationship between targets and
+     prerequisites, and how to update the targets.  The general form is:
+
+     target [ target ... ] : [ prerequisites ]
+     [ <tab>command ]
+        ....
+
+     where <tab> is the tab character.
+
+     The first line of an entry is a blank-separated list of targets, then
+     a colon, then a list of prerequisite files.  All following lines that
+     begin with a tab are commands to be executed to update the target.  A
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 4
+
+
+
+
+
+     target with no prerequisites is considered up to date if it exists and
+     out of date if it doesn't exist.  When you do the `make' without any
+     arguments, the first target in makefile gets made.  A dummy target (a
+     file that never exists so is always out of date) is often used as the
+     first target when you wish to make several targets.
+
+     Consider this makefile:
+     
+     all : target1.exe target2.exe
+     
+     target1.exe : ....
+          commands
+     
+     target2.exe : ....
+          commands
+
+     Executing `make' with no arguments results in both target1.exe and
+     target2.exe being made.  This happens because MAKE always ensures all
+     prerequisites are up to date before it makes a target.  Here, the
+     target ALL has two prerequisite files - TARGET1.EXE and TARGET2.EXE.
+     First TARGET1.EXE then TARGET2.EXE get made, then MAKE checks if
+     either of these files are more current than ALL.  Since ALL doesn't
+     exist, both are newer than it, and the commands to update ALL will be
+     executed.  There are no commands for this example.
+
+     As an further example, assume you have a program TEST.EXE that is
+     composed of modules MAIN.OBJ and SUB.OBJ.  Each of these depend on a
+     common include file, INCL.H, and on their respective `.c' files.  The
+     makefile might look like:
+
+     test.exe : main.obj sub.obj
+          link main.obj sub.obj, test;
+
+     main.obj : main.c incl.h
+          msc -AL main.c;
+
+     sub.obj : sub.c incl.h
+          msc -AL sub.c;
+
+     A target may appear on the left of more than one `colon' line, and it
+     will depend on all of the names on the right of the colon on those
+     lines, but only one command sequence may be specified for it.  An
+     example a little further down will show this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 5
+
+
+
+
+
+     2) Macros
+     ---------
+
+     Makefile entries of the form:
+     
+     name = [value]
+     
+     are macro definitions.  Macros allow the association of a name and a
+     value.  Subsequent appearances of $(name) or ${name} are replaced by
+     value.  If name is a single character, the parentheses or braces are
+     optional.  Spaces between name and =, and between = and value are
+     ignored.  If value is not given, the macro value is a null string.
+     MAKE warns you if you use a macro that hasn't been defined.
+
+     The previous example could have had:
+     
+     OBJS = main.obj sub.obj
+
+     test.exe : $(OBJS)
+          link $(OBJS), test;
+
+     $(OBJS) : incl.h         # main.obj and sub.obj depend on incl.h
+
+     main.obj : main.c        # As well, main.obj depends on main.c
+          msc -AL main.c;     # There is only one command sequence which
+          echo Done           # may of course be several lines long.
+
+     sub.obj : sub.c          # sub.obj depends on sub.c
+          msc -AL sub.c;
+
+     MAKE evaluates macros only when needed, and the order in which macros
+     appear in a description file is insignificant.  Conventionally, all
+     definitions appear at the top of the description file.  If the same
+     name is defined more than once, the most recent definition is used.
+     The precedence of definitions is:
+
+          1. command line definition    (highest)
+          2. makefile definition
+          3. MAKE.INI definition
+          4. environment definition     (lowest)
+
+     If make.ini has macros MODEL=S and CFLAGS=-A$(MODEL) -Od, but you do:
+          A> make MODEL=L
+     then when it comes time to use CFLAGS, MAKE will expand CFLAGS as
+     `-AL -Od'.  This is because command line macros have the highest
+     precedence.  For command line macros that include spaces, place the
+     macro value in double quotes "":
+          A> make CFLAGS="-Od -Zi"
+
+     The lowest precedence of macro is the environment definition.  This
+     refers to the environment variables put into the DOS environment with
+     the `SET variable = value' DOS command.  For example, you could refer
+     to the ${PATH} macro without defining it in make.ini or makefile.  Its
+     value comes out of the DOS environment.
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 6
+
+
+
+
+
+     MAKE will let you define a recursive macro:
+          macro1 = $(macro2)       # macro1 = the value of macro2
+          macro2 = $(macro1)       # macro2 = the value of macro1
+     but signals a `recursive macro' error if it tries to use it.
+
+
+     Predefined macros:
+
+     There are 4 "run-time" macros.  These are:
+     
+          $@ - stands for the full target name
+          $? - stands for the list of prerequisites that are newer than
+               the target.
+          $* - stands for the root of the target name.  This is the part
+               after any path separators and before any extension.
+          $< - stands for the complete name of the file that satisfied
+               the default rule.
+
+     $< is only valid within default rules.  $@, $? and $* can be used at
+     any time.
+          $(OBJS) : $*.c
+
+     Macros $< and $@ can be modified with a `D' or an `F'.  `D' specifies
+     the directory part, and `F' the file part.  So if $< evaluates to
+     ..\make.c, ${<D} is ".." and ${<F} is "make.c".  In conjunction with
+     `D' and `F', $@ tells you everything about the target being made (its
+     full name, the directory it's in, and its name), and $< tells you
+     everything about the file being used to make the target.
+
+     The macro `MFLAGS' gets filled in with the initial command line
+     options supplied to MAKE.  This can be used to invoke MAKE on
+     makefiles in subdirectories and pass along the options.  The macro
+     `CWD' gets filled in with the current working directory.  The macro
+     `$$' evaluates to the dollar sign, $.
+
+     Macro `MAKE_TMP' has special meaning.  MAKE_TMP is the name of the
+     directory MAKE will use for temporary files (response files, batch
+     files, and error files).  If you wish, you can define MAKE_TMP in
+     terms of other macros or environment variables.  eg:
+          MAKE_TMP = $(TMP)
+
+     A RAMdisk would be the best place for MAKE_TMP.  If you're running DOS
+     2.x, MAKE_TMP can't have any backslashes (path separators) in it.
+     This is because COMMAND.COM is incapable of executing batch files (or
+     for that matter, any executable files) if the filename contains path
+     separators.  DOS 3.x doesn't have this problem and there is no
+     restriction on MAKE_TMP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 7
+
+
+
+
+
+     3) Default rules
+     ----------------
+
+     MAKE can use default rules to specify commands for files for which the
+     makefile gives no explicit commands.  A default rule tells MAKE how to
+     create a file with a particular extension from a file with the same
+     root name but another extension.  Default rules take the form:
+
+     .from_extension.to_extension :
+          command
+          [command]
+           ...
+
+     For example, to produce a `.obj' file from a `.c' file, the default
+     rule could be:
+
+     .c.obj :
+          msc ${CFLAGS} $<;
+
+     When MAKE finds a target with no commands, it looks for the first
+     possible name for which both a rule and a file exist.  There may be
+     several ways to produce a `.obj' file (eg from a compiler or from
+     MASM), and the order in which rules are attempted is specified by the
+     `.SUFFIXES' list.  This is a special target with a list of extensions.
+     For example:
+
+     .SUFFIXES: .exe .obj .c .asm .for
+
+     If MAKE was trying to make a TEST.OBJ file using a default rule, it
+     would first look for a `.c.obj' rule (since `.c' follows `.obj' in the
+     .SUFFIXES list).  If found it would check for the file TEST.C.  If the
+     file didn't exist, MAKE would look for a `.asm.obj' rule (and TEST.ASM
+     file), and finally a `.for.obj' rule (and TEST.FOR file).
+
+     Assuming MAKE.INI contained the .c.obj rule and .SUFFIXES as defined
+     above, our previous example could be written more succinctly as:
+
+     OBJS = main.obj sub.obj
+
+     test.exe : $(OBJS)
+          link $(OBJS), test;
+
+     $(OBJS) : incl.h
+
+     Because of the default rules, MAIN.OBJ and SUB.OBJ implicitly depend
+     on files MAIN.C and SUB.C, respectively, as well as explicitly
+     depending on INCL.H.
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 8
+
+
+
+
+
+     4) "dot targets"
+     ----------------
+
+     Besides the special target `.SUFFIXES' mentioned above, there are a
+     few other special targets that can be put in MAKE description files.
+
+     .IGNORE - Commands returning nonzero status (ie. the errorlevel) cause
+               MAKE to terminate unless the special target `.IGNORE' is in
+               makefile or the command begins with `-' (hyphen).  The `-i'
+               option gives the same effect.
+
+     .NOIG -   Normally, MAKE ignores the case of file names and macros.
+               This target tells MAKE to consider case important.
+
+     .PRECIOUS - Break (control-C) and command errors cause the target
+               being worked on to be deleted if it's been changed unless
+               it's a prerequisite of the target `.PRECIOUS'.  For example:
+               
+               .PRECIOUS: nerase.exe
+
+     .SILENT - Commands to be executed are printed when executed unless the
+               special entry `.SILENT' is in makefile, or the first
+               character of the command is `@'.  Equivalent to the `-s'
+               option.  For example:
+               
+               all.exe : 1.obj 2.obj 3.obj
+                    - link 1 2 3, tmp.exe;    # ignore any errors
+                    @ erase tmp.exe           # don't echo this line
+
+     .SUFFIXES - As mentioned above, this gives the order in which to try
+               default rules.  Suffixes accumulate, so if we have the same
+               .SUFFIXES as listed above in make.ini, and the makefile had:
+               
+                    .SUFFIXES : .obj .pas
+               
+               the combined suffix list would look like:  .obj .pas .exe
+               .obj .c .asm .for.  A .SUFFIXES target with no suffixes
+               clears the list of suffixes.  A common source of errors when
+               using default rules is getting the order of .SUFFIXES wrong.
+               The default rule looks like .from.to but the .SUFFIXES entry
+               looks like .to ... .from.  Note the reversal in order!
+
+
+     Command prefixes -, @, !, >, >>
+     -------------------------------
+
+     Commands may be prefixed with special characters.  `@' before a
+     command means not to print the command before executing it, `-' means
+     ignore the exit status (a number testable by "if errorlevel ...") that
+     is returned from the command.  Normally MAKE stops when a command
+     returns a non-zero error code.  `!' indicates the command will be
+     executed in a loop.  `>' and `>>' allow lines to be copied to a file.
+
+
+
+
+
+
+
+
+                                                    NDMAKE v4.3 page 9
+
+
+
+
+
+     The loop prefix `!'
+     -------------------
+
+     MAKE performs a loop over a command if the command is prefixed with
+     `!'.  The command is executed once for each element of the macro $?,
+     and during execution the macro $? is set to that element.  Example:
+     x: 1 2 3
+          ! echo $?
+     
+     If 2 and 3 are more recent than x, then $? will initially have the
+     value "2 3".  The "echo $?" command will be executed twice, once with
+     $? equal to 2 and once with $? equal to 3.  The commands would be:
+     
+     echo 2
+     echo 3
+
+
+     Output to files `>' and `>>'
+     ----------------------------
+
+     MAKE can write to files or devices by:
+     
+          >filename line1, line2, line3      # or
+          >>filename line1, ...
+     
+     Commas demark the lines of the file.  For `>', the file is opened as a
+     new file (old contents are destroyed), for `>>' the file is opened in
+     append mode.  For comma *not* to mean "make a new line", quote it with
+     a backslash (ie. \, will be a comma, not a new line).
+
+     "filename" can also be the name of a device.  >con will cause output
+     to go to the console.  >prn will cause the lines to show up on your
+     printer.  There is a bug in DOS 2.x which often won't allow the
+     console to be opened for output.  To compensate, MAKE understands
+     "stdout" and "stderr".  Stdout and stderr both go to the screen, but
+     DOS can redirect stdout whereas stderr cannot be redirected.
+
+     The prefixes are used like this:
+          @ echo Testing 1, 2, 3        # command isn't printed
+          -! echo Hi there              # ignore status and loop
+          @-!>> filename looping...     # silent, ignore, loop, and output
+
+     `>' and`>>' must appear as the right-most prefixes (just before the
+     filename).  This is to allow macros to be used to change where output
+     will go -- macro expansion happens after checking for `-', `@' and
+     `!'.  You can do something like:
+          -$(out) Compiling ...
+     where "out" can be defined as ">stdout" for output to screen, ">prn"
+     for output to printer, or "echo" for echoing through COMMAND.COM.
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 10
+
+
+
+
+
+     VPATH
+     -----
+
+          The VPATH macro specifies the directory names NDMAKE will use to
+     try to find files that don't have a path specification.  Where is this
+     useful?  One example is when you have a set of sources that are
+     conditionally compiled for different target machines or for different
+     memory modules.  You want to keep only 1 set of sources, but want to
+     compile them a variety of ways.  What you'd usually do is create
+     subdirectories for each different target machine and put a makefile in
+     each subdirectory with VPATH referring to the parent directory (.. in
+     MSDOS).  Then when NDMAKE looked for the sources, it would look in the
+     parent directory.  If VPATH isn't defined, only the current directory
+     is searched for files.  A sample VPATH is:
+
+          VPATH = .;..
+
+          This means ".", the current directory, is the first to be
+     searched and "..", the parent directory, is to be searched next.  A
+     semi-colon separates directory names.  In UNIX make, a colon is used,
+     but for compatability with DOS PATH, in NDMAKE a semicolon is used.
+
+          When NDMAKE tries to find a file like "test.obj", it will look
+     first for ".\test.obj", then "..\test.obj".  The first file found is
+     used.  When NDMAKE is trying to find an implicit dependency, it
+     constructs a particular file (eg "test.c"), then tries each directory
+     in order to find the file.
+
+          As an example, assume VPATH is as above, "test.c" is in the
+     parent directory and your default rule for .c.obj is:
+
+          .c.obj:; cl -c $<
+
+     When you type "make" from this directory, you would get:
+
+          cl -c ..\test.c
+
+          So far so good.  It turns out that Microsoft C is good about
+     putting the directory part of the file it's compiling on the include
+     path.  If that were not the case, and test.c included any "local"
+     files (eg "header.h"), then the compile might fail because header.h is
+     not in the current directory -- it's in the parent directory with the
+     sources.  For other compilers, you may want to use the new macro "<D"
+     which selects the directory component of <.  Your default rule could
+     be written as:
+
+          .c.obj:; cl -c $< -I$(<D)
+
+     and the compilation would be:
+
+          cl -c ..\test.c -I..          # -I adds .. to the include path
+
+          There are a few other new macros:  "<F", the file name component
+     of <; @D and @F, the directory and file components of @.  If VPATH is
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 11
+
+
+
+
+
+     not specified, <D will be "." and @D will be the directory component
+     of @ ("." if there is no directory component).  Also, <F will be the
+     same as < and @F will be the file component of @.
+
+          Still with me?  It gets worse!  VPATH has to be a little trickier
+     than this.  What if you have many machine-INdependent files, and only
+     a few machine-DEpendent files?  You would like to keep the DEpendent
+     .obj files in the subdirectories and all sources and INdependent .obj
+     files in the parent directory.  Now your makefile in each subdirectory
+     looks something like:
+
+          VPATH  = .;..
+          OBJS   = dep.obj main.obj indep.obj
+          DEFS   = -DIBMMONO
+          CFLAGS = $(DEFS) -AL
+     
+     ibmmono.exe: $(OBJS)
+          link $(OBJS), $@;
+
+          Main.obj and indep.obj are found in ".."; dep.obj is found here
+     in "."; all source files are found in ".."  The compilation goes
+     smoothly, but when it comes time for the link, $(OBJS) expands to:
+
+          dep.obj main.obj indep.obj
+
+     which fails since several of the .objs are in "..".  What we want is:
+
+          dep.obj ..\main.obj ..\indep.obj
+
+          Therefore, NDMAKE *translates* each command to include the actual
+     path to the file!!  This could lead to confusion, but I think you'll
+     agree it's a powerful necessity.  To prevent wierdness, macros @, @D,
+     @F, <, <D, <F, and * are never translated.  Otherwise some of them
+     wouldn't be much use.  So now the link proceeds with:
+
+          link dep.obj ..\main.obj ..\indep.obj, ibmmono.exe;
+
+          Punctuation may prevent NDMAKE from translating a name.  If a
+     name should be translated but it isn't, try separating the name from
+     any punctuation with whitespace.  For example, when using overlays
+     with Microsoft Link the object modules go in parenthesis -- NDMAKE
+     won't translate a name like (main.obj) but does fine on ( main.obj ).
+
+|         The demo version of NDMAKE, MAKE43D.EXE, only accepts 1 directory
+|    name for use in VPATH.  This is to allow you to see what it can do but
+|    encourage you to register.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 12
+
+
+
+
+
+     Options
+     -------
+
+     Options (also known as flags) are entered on the command line with a
+     `-' or `/'.  Options can be grouped together after a single `-', so
+     -dp is equivalent to -d -p.
+
+          -d   Debug mode.  Traces MAKE as it executes, printing the time
+               difference between each file and the target that has it as a
+               prerequisite.  Also, automatically generated batch and
+               response files will not be deleted.
+
+          -h   Prints a help screen.
+
+          -i   Ignore errors.  Equivalent to the special entry .IGNORE.
+               Causes a nonzero exit status to be ignored.  Doing
+               `make -i > errs' collects all error messages into 1 file.
+               Interrupting `make -i' may require several control-Cs.
+
+          -k   Keep going.  When a command returns nonzero status, abandon
+               work on the current target, but continue on branches that do
+               not depend on the current target.
+
+          -n   No execute.  Display but do not execute the commands needed
+               to update the targets.
+
+          -p   Print information on macros, dependencies, and *available*
+               default rules.  A rule is available if it is defined in a
+               .from.to target and there are .to and .from extensions in
+               .SUFFIXES in the correct order (.to to the left of .from).
+
+          -q   Query.  Sets MAKE's exit status to 1 if there are things to
+               be made and 0 if there aren't.
+
+          -r   Remove default rules.  Actually clears .SUFFIXES after
+               MAKE.INI has been read.  The effect of this is to prevent
+               MAKE from using default rules other than those in makefile.
+
+          -s   Silent mode.  Equivalent to the special entry .SILENT.
+               Commands are not displayed before being executed.
+
+          -t   Touch, i.e. set the file time of the out of date targets to
+               the current time without executing any commands.  This will
+               create target files of length zero if they do not exist.
+               MAKE `touches' files just like the included TOUCH.EXE
+               program.  The small tutorial included later in this
+               documentation shows how to use this flag.
+
+          -u   Unconditional make.  All specified targets are made whether
+               they are out of date or not.
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 13
+
+
+
+
+
+     DOS commands, batch files, redirection and error codes
+     ------------------------------------------------------
+
+     Skip this section if you are running DOS 3.0 or higher.
+
+     MAKE depends on a program's exit status (a number testable with the
+     "if errorlevel ..." command in DOS) to determine whether or not an
+     error has occurred.  An exit status of 0 means no error.  In order for
+     MAKE to execute internal DOS commands (like copy, chdir, ...), run
+     batch files, or perform IO redirection (with >, >>, |, or <), MAKE
+     must start a second copy of COMMAND.COM and have that copy execute the
+     command.  For DOS versions older than 3.0, COMMAND.COM *always*
+     reports an exit status of zero, implying no error has occurred.  MAKE
+     compensates for this by using an error file to communicate the exit
+     status back to MAKE.  The error file's name is put into the
+     environment so your batch files can refer to it as %MAKE_ERR%.
+
+     When MAKE needs to start up another copy of COMMAND.COM it builds a
+     batch file and has COMMAND.COM execute the file.  If you interrupt the
+     batch file with CONTROL-BREAK you may get the prompt "Terminate BATCH
+     file ? (y/n)".  Answer `y' and MAKE will know an error has occurred.
+
+     After MAKE gets control back from the batch file, it detects an error
+     by checking for the error file.  If the file exists, an error has
+     occurred; if the file is absent, the batch file finished successfully.
+     If you use your own batch files from MAKE they have to be modified
+     slightly to send the exit status back to MAKE.  This is because DOS
+     won't return to MAKE's batch file after your's has finished.  The
+     following line, placed at the end of your batchfile, is needed:
+
+          if exist %MAKE_ERR% do erase %MAKE_ERR%
+
+     To get a little fancier, your batch file could look like:
+     
+          command1
+          if errorlevel 1 goto end
+          command2
+          if errorlevel 1 goto end
+          if exist %MAKE_ERR% do erase %MAKE_ERR%
+          :end
+
+     As you can see, the error file gets erased only if command1 and
+     command2 execute without error.
+
+|    The demo version of NDMAKE, MAKE43D.EXE, does not have this feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 14
+
+
+
+
+
+     Response files -- special handling of LINK and LIB
+     --------------------------------------------------
+
+     Some programs (notable LINK and LIB) can receive their input from a
+     file called a response file.  Usually a response file is used when the
+     length of the command line becomes longer than DOS allows.  In program
+     development, the LINK and LIB commands are used very often and MAKE
+     generates a response file automatically when required.
+
+
+     1) LINK response files
+     ----------------------
+
+     When a program name has the root name "LINK" and a command line longer
+     than DOS allows, MAKE generates a response file and has LINK use the
+     response file.  Your command:
+          link $(OBJS), test.exe,, $(LIBS)
+     will work without modification no matter how long the line becomes.
+
+
+     2) LIB response files
+     ---------------------
+
+     Similar to a LINK response file, but slightly more complex to
+     compensate for LIB's syntax.  MAKE takes the LIB command:
+          lib libname [/pagesize] operations ... [, listing] [, newlib]
+     
+     and generates a response file with the most recent operation placed
+     between each object module.  For example:
+          lib my.lib -+ main.obj sub1.obj sub2.obj + sub3.obj ;
+     
+     becomes:
+          lib @responsefile
+     
+     where the response file has the contents:
+          my.lib
+          -+ main.obj -+ sub1.obj -+ sub2.obj + sub3.obj ;
+     
+     This is most useful when you want to update a library when some of its
+     modules have been recompiled.  For example, if "my.lib" depends on
+     modules LIBOBJS then the following updates the library with only those
+     modules which have been changed since the library was last written:
+
+     my.lib: $(LIBOBJS)
+          lib my.lib -+ $? ;  # $? expands to the prerequisites more recent
+                              # than the target
+
+     When a library doesn't exist yet, MAKE will tell LIB to create it.
+     Note that the `>' prefix can be used to write response files for
+     commands other than LIB and LINK.
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 15
+
+
+
+
+
+     UNIX features
+     -------------
+
+     As with UNIX `make', dependency lines and default rules can have a
+     command on the same line as the `colon' line, provided the command
+     follows a semicolon:
+
+     .c.obj:; msc $<;
+     test.exe: $(OBJS); link $(OBJS) , test;
+          @echo done
+
+     # are equivalent to
+
+     .c.obj:
+          msc $<;
+     test.exe: $(OBJS)
+          link $(OBJS) , test;
+          @echo done
+
+     If a name appears on a line with a double colon, `::', then the
+     command sequence following that line is performed only if the name is
+     out of date with respect to the names to the right of the double
+     colon, and is not affected by other double colon lines on which that
+     name may appear.  Consider the following makefile:
+
+     1:: 2; echo 2
+     1:: 3; echo 3
+
+     If 2 and 3 are more recent than 1, then "make -n 1" will result in:
+     echo 2
+     echo 3
+
+     If 1 is more recent than 3, but 2 is newer than 1 the response is:
+     echo 2
+
+     If 1 is more recent than both 2 and 3, the response will be:
+     Make: `1' is up to date.
+
+     MAKE supports multiple commands on a single line if the command is
+     enclosed in parentheses () and the commands are separated by semi-
+     colons (use \; if you need a semi-colon to *not* be interpreted as a
+     command separator).  In fact, since each command line is executed in
+     its own shell, this is the only way to use DOS commands like "set" and
+     "chdir" so that they have any effect.  For example, doing "make x"
+     where the makefile looks like:
+          x:
+               chdir \tmp
+               copy *.* a:
+     
+     will copy the contents of the *current* directory, not \tmp, to drive
+     A.  This is because MAKE starts each command in the current directory.
+     The correct way to write this is:
+          x:
+               (chdir \tmp; copy *.* a:)
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 16
+
+
+
+
+
+     A batch file is always used to execute commands surrounded by (), even
+     if there's only one command.  Thus, you can force MAKE to use
+     COMMAND.COM for any command by putting the command in parentheses.
+     One very interesting use of the () syntax is to create macros that
+     expand to multiple-line commands!
+
+
+     Additional notes and technical information
+     ------------------------------------------
+
+     Lines in a MAKE description file that are too long to fit on one line
+     can be extended to the next line by putting backslash, `\', followed
+     be <RETURN> as the last two characters of the line.  If you need a `\'
+     as the last character, put a space or comment character somewhere
+     after it on that line.  The longest single line MAKE can handle is 512
+     bytes, but by using `\' to break up the line into shorter pieces,
+     there is no limit to line length (except available memory).
+
+     By default, case is unimportant, so `test.obj' and `TEST.OBJ' are the
+     same.  If .NOIG is present these will no longer by the same.
+
+     Everything on a line after the comment character, `#', is ignored.
+
+     The character separating targets and dependents, `:', is also the
+     character used for the drive separator in MSDOS.  To distinguish this
+     colon from the drive separator, it must be followed by space or tab
+     (eg: ), semicolon (eg:;), colon (eg::), or nothing (eg:<return>).  If
+     you consistently use at least one space you will have no problem.
+
+     If you type in a makefile from the keyboard (by using the command
+     `make -f -'), put a ^Z (control-Z) followed by a <RETURN> as the last
+     two characters.  This tells MAKE to stop reading from the keyboard.
+
+     Targets defined in makefile take precedence over targets of the same
+     name defined in MAKE.INI.  Targets defined in MAKE.INI can never be
+     default targets.  "dot targets" can never be default targets.
+
+     MAKE is stupid -- after the commands to update a target have been
+     executed without error, MAKE assumes the target is up to date.  If you
+     give commands that don't really update a target, MAKE doesn't know.
+
+     When MAKE executes commands, such as `link', it checks if it's a DOS
+     internal command, if it's a batch file, or if it involves IO
+     redirection.  If so, MAKE loads a second copy of COMMAND.COM and
+     passes it the command line.  Otherwise, MAKE tries to execute the
+     command as a program (a .exe or .com file).  This is done to prevent
+     loading COMMAND.COM unless absolutely necessary.  Also, MAKE uses
+     environment variable "COMSPEC" to find COMMAND.COM so you can copy
+     COMMAND.COM to your RAMdisk and set COMSPEC to point to that copy.
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 17
+
+
+
+
+
+     Sample session - what MAKE does when it's running
+     -------------------------------------------------
+
+     Assume you have the following MAKE.INI file and MAKEFILE.
+
+
+     make.ini
+     --------
+
+     .SUFFIXES : .exe .obj .c .for .asm
+     M = S
+     CFLAGS = -A$M
+
+     .c.obj:; cl ${CFLAGS} -c $<
+
+     .obj.exe:; link $<, $@;
+
+     .c.exe:
+          cl ${CFLAGS} -c $<
+          link $*.obj, $@;
+          erase $*.obj
+
+
+     makefile
+     --------
+
+     OBJS = main.obj sub.obj
+
+     test.exe: $(OBJS)
+          link $(OBJS), $@,, \lib\local;
+
+     $(OBJS): incl.h
+
+     sub.obj: sub.c
+          cl $(CFLAGS) -Od -c sub.c
+
+     install: test.exe
+          copy test.exe $(BIN)          # BIN comes from the environment
+
+     ----------
+
+     Assume the following files are in your directory: MAIN.C, SUB.C,
+     INCL.H.  When you type:
+
+     A> make
+
+     MAKE first reads MAKE.INI then MAKEFILE.  It sees the first target
+     TEST.EXE and tries to make it.  But first, MAKE must know if the files
+     that TEST.EXE depends on are up to date.  As TEST.EXE depends on
+     several `.obj' files, and these `.obj' files also have dependents, the
+     detailed procedure MAKE undergoes looks like this:
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 18
+
+
+
+
+
+     -Make TEST.EXE
+          - there are explicit commands for making TEST.EXE so don't
+            bother looking for implicit prerequisites.
+          - TEST.EXE depends on MAIN.OBJ and SUB.OBJ.  Make these.
+          - Make MAIN.OBJ
+               - Since there are no explicit commands for MAIN.OBJ, check
+                 for implicit prerequisites based on default rules.
+               - Find rule `.c.obj' and file `main.c'.
+               - Add MAIN.C to the prerequisites of MAIN.OBJ.
+               - MAIN.OBJ depends on INCL.H and MAIN.C.  Make these.
+               - Make INCL.H
+                    - Since there are no explicit commands for making
+                      INCL.H, check for implicit prerequisites.
+                    - Since there is no `.h' suffix in .SUFFIXES, there are
+                      no implicit prerequisites.
+                    - There are no prerequisites, so INCL.H is up to date.
+               - Make MAIN.C
+                    - Since there are no explicit commands for making
+                      MAIN.C, check for implicit prerequisites.
+                    - Since there are no `.from_extension.c' rules, there
+                      are no implicit prerequisites.
+                    - There are no prerequisites, so MAIN.C is up to date.
+               - Compare MAIN.OBJ with INCL.H and MAIN.C.  Since MAIN.OBJ
+                 doesn't exist, it is out of date with respect to its
+                 prerequisites, so execute the (default) command:
+     
+                 cl -AS -c main.c
+     
+          - MAIN.OBJ is up to date.
+          - Make SUB.OBJ
+               - There are explicit commands for making SUB.OBJ so don't
+                 bother looking for implicit prerequisites.
+               - SUB.OBJ depends on INCL.H and SUB.C.  Make these.
+               - Make INCL.H
+                    - MAKE already knows that INCL.H is up to date.
+               - Make SUB.C
+                    - Since there are no explicit commands to make SUB.C,
+                      check for implicit prerequisites.
+                    - Since there are no `.from_extension.c' rules, there
+                      are no implicit prerequisites.
+                    - There are no prerequisites, so SUB.C is up to date.
+               - Compare SUB.OBJ with INCL.H and SUB.C.  Since SUB.OBJ
+                 doesn't exist, it is out of date with respect to its
+                 prerequisites, so execute the (explicit) command:
+     
+                    cl -AS -Od -c sub.c
+     
+          - SUB.OBJ is up to date.
+          - Compare TEST.EXE with MAIN.OBJ and SUB.OBJ.  Since TEST.EXE
+            doesn't exist, execute the command:
+     
+               link main.obj sub.obj, test.exe,,\lib\local;
+
+     - TEST.EXE is up to date.
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 19
+
+
+
+
+
+     Assuming no errors occurred, when you now type `make' you will get the
+     message that TEST.EXE is up to date.  If you edit SUB.C and change it,
+     when you next type `make', MAKE will see that SUB.C is more recent
+     than SUB.OBJ and recompile SUB.C.  MAKE will then see that SUB.OBJ is
+     more recent than TEST.EXE and relink the files.
+
+     If you type `make install', MAKE will ensure TEST.EXE is up to date,
+     then copy it to your BIN directory.  BIN was assumed to be defined in
+     your environment.
+
+
+     Use of flags -t, -i, -n, -d, and -p
+     -----------------------------------
+
+     Now assume you edit INCL.H and make changes that only affect SUB.C
+     (for example, you change the value of a #define but you don't have to
+     edit SUB.C).  If you were now to type `make', MAKE would compile both
+     SUB.C and MAIN.C.  To have MAKE only recompile SUB.C you do three
+     things.  First, `make -t' to touch (update) all files.  You will see
+     that MAKE touches MAIN.OBJ and SUB.OBJ, then TEST.EXE.  Now, `touch
+     sub.c'.  This results in SUB.C being newer than SUB.OBJ.  Finally,
+     `make' again.  Now MAKE will compile only SUB.OBJ, then link the
+     files.
+
+     The process of editing a common include file to change something that
+     only affects one file occurs often enough that the `make -t' + `touch'
+     + `make' procedure can save a lot of time.
+
+     If you are changing an include file and also changing some of the `.c'
+     files, then usually you edit the include file, do `make -t', edit the
+     `.c' files, then do `make'.
+
+     The `i' flag is useful for collecting all errors into a single file
+     without stopping MAKE.  This is helpful when you're porting software
+     and expect a lot of errors or when you make global changes that may
+     produce a lot of errors (for example, changing a structure definition
+     in an include file or changing from small to large code models).
+
+     The `n' flag is used when you just want to see what MAKE will be
+     doing.  This is useful if you've changed several modules, but forget
+     which ones.  `make -n' shows which ones will be compiled.
+
+     `d' and `p' are usually used in debugging.  If your MAKE doesn't seem
+     to be doing what you think it should, use `d' to watch it compare each
+     file with its prerequisites.  The time listed is relative to the
+     target.  A time that begins with - means the prerequisite is older
+     than the target; + means the prerequisite is newer.
+
+     Usually `d' is used in conjunction with `n' and sometimes with `p'.
+     `p' prints the values of MAKE's macros, targets, and default rules.
+     The `p' flag causes MAKE to list only those rules that are reachable.
+     If a rule you defined isn't listed and you think it should be, chances
+     are you forgot to update .SUFFIXES.
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 20
+
+
+
+
+
+     Using MAKE without a makefile
+     -----------------------------
+
+     MAKE can be used in a limited fashion without having a makefile
+     because it always reads MAKE.INI.  Assume you have a file called
+     XYZZY.C and using the same MAKE.INI file described above, you type:
+
+     A> make xyzzy.exe
+
+     MAKE uses its default rule `.exe.c' to compile XYZZY.C ($<), link
+     XYZZY.OBJ ($*.obj) to form XYZZY.EXE ($@), then erases XYZZY.OBJ.  If
+     several `.exe' files exist in a directory and you have just finished
+     editing some of their `.c' files, you could type:
+
+     A> make *.exe
+
+     and update only the `.exe' files that are out of date.  By adding more
+     default rules to MAKE.INI, MAKE could invoke the FORTRAN compiler for
+     `.for' files or MASM for `.asm' files.  In this way, MAKE can do the
+     right thing for each type of file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 21
+
+
+
+
+
+     Changes since version 3.0
+     -------------------------
+
+     - The addition of LIB response files and of VPATH.
+
+     - MAKE's ability to get back error codes for DOS internal commands and
+     batch files.
+
+     - Multiple commands on a single line.  This allows macros which expand
+     into multiple line commands and also because:
+
+     - Make always starts each separate command in the current directory
+     with a separate shell.  This means "chdir" and "set" have to be used
+     inside of multiple commands for them to have *any* effect.
+
+     - Touch (the -t flag) was made to act exactly like the UNIX version.
+     Previously it did not create a file if it did not exist.
+
+     - Space can be used instead of tab before command lines.  This is
+     compensation for some editors which do not do tabs.
+
+     - MAKE_TMP was added for fast batch execution.
+
+     - The prefix `+' (to tell MAKE to start up COMMAND.COM) was removed.
+     For the same purposes, use parenthesis instead.  Since MAKE keeps an
+     internal table of DOS commands the use of `+' for speed is no longer
+     necessary.
+
+     - Addition of -q (query flag).
+
+     - Addition of D and F modifiers for macros @, and <.
+
+
+     Changes since version 4.0
+     -------------------------
+
+     - Addition of:
+          `>' and `!' prefixes for output to files and looping.
+          -u flag for unconditional make.
+          .NOIG to make macros and filenames case sensitive.
+
+     - Bugfixes:
+          VPATH was finding nonexisting files.
+          Invalid complaining by VPATH for directories on another disk.
+          / was used in filenames on calls to LINK when switchar was -.
+               (LINK has / hardcoded for switches).
+          Incorrect parsing of LIB commands caused MAKE to write garbage
+               for the list file.
+          No MAKE_TMP causing problems with batch files under DOS 2.0
+
+     - Others:
+          No batch file is used if ignoring errors when execking COMSPEC.
+          Use findfirst rather than open to check for files and get their
+               times.  This is much faster on networks.
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 22
+
+
+
+
+
+     Future directions for NDMAKE
+     ----------------------------
+
+          With the addition of VPATH, NDMAKE has taken a great step forward
+     from other PC version of MAKE.  No doubt there will be bugs in the
+     current implementation.  I anticipate adding much faster directory
+     lookup when VPATH is in effect.  I may add a true batch mode (as
+     opposed to "make -n" which doesn't generate response files).  As well,
+     an automatic dependency generator is in the works.  System V UNIX just
+     got an updated version of make and I will be bringing the most useful
+     features to NDMAKE.  I'm currently testing a method to reduce the
+     amount of memory NDMAKE uses from 42000 to about 2000(!) bytes.  This
+     will be useful for recursive makes and where memory is short.
+
+          I'm still considering adding archive support (especially ARC),
+     but haven't decided how to do it quite yet.
+
+          As always, I will entertain any suggestions from registered
+     users.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 23
+
+
+
+
+
+     USER-SUPPORTED SOFTWARE NOTIFICATION
+     ------------------------------------
+
+          If you like and use this program, I ask you to consider
+     registering it.  The benefits of registration include the first update
+     free.  Registered owners will get a response to any questions they may
+     have.  Also, if you're registered I will consider any suggestions you
+     may have.  I want NDMAKE to be the best MSDOS make available.
+
+          The registration fee is $35.  To date, about 50 people have
+     registered, so please consider registering your copy.  Commercial use
+     of this program requires registration.  If you use NDMAKE in your
+     work, you are required to register it.  Many thanks to those of you
+     who have registered.
+
+          Regardless of whether you register or not, you may freely copy
+     and distribute this program for noncommercial purposes.  The programs,
+     MAKE.EXE and TOUCH.EXE, the documentation, MAKE.DOC and TOUCH.DOC,
+     and the initialization file, MAKE.INI, must all be distributed together.
+     If you post this program to a public bulletin board, please put all the
+     files in an ARChive called NDMAKE43.ARC.
+
+          I hope you enjoy NDMAKE and find it a useful addition to your
+     programming tools.  If you have any questions you can reach me at:
+
+          US MAIL:  D. G. Kneller
+                    1468 8th Ave
+                    San Francisco, CA 94122
+          PHONE:    (415) 476-8291 (days) 731-3108 (home)
+          UUCP:     ...ucbvax!ucsfcgl!kneller
+          ARPANET:  kneller@cgl.ucsf.edu
+          BITNET:   kneller@ucsfcgl.BITNET
+
+     ----------
+
+     UNIX is a registered trademark of Bell Laboratories.
+     MSDOS is a registered trademark of Microsoft Corp.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                   NDMAKE v4.3 page 24
+
+
+
+
+
+     ---------------------------------------------------------------------
+
+                       Registration form for NDMAKE v4.3 
+
+     
+
+     Name:               _________________________________________________
+
+     Address:            _________________________________________________
+
+     City, State, Zip:   _________________________________________________
+
+     Country:            _________________________________________________
+
+     
+
+     OPTIONAL: System description (computer, memory, DOS version)
+
+     _____________________________________________________________________
+
+     _____________________________________________________________________
+
+     
+
+     COMMENTS: Please feel free to add your thoughts or suggestions!
+
+     _____________________________________________________________________
+
+     _____________________________________________________________________
+
+     _____________________________________________________________________
+
+     _____________________________________________________________________
+
+     
+
+     Mail to:
+
+                         D. G. Kneller
+                         1468 8th Ave
+                         San Francisco, CA 94122
+                         U.S.A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

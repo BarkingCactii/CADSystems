@@ -1,0 +1,70 @@
+/*----------------------------------------------------------------------------
+dlgmgr.doc
+
+Dialog Manager docs
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+int dlg_open(int, void *)
+int dlg_close(int)
+void *dlg_get_user_data()
+int dlg_comeback()
+
+Include "dlgmgr.h" for definitions
+
+The contents of _Dlg_event_table Dialog[] will need to be maintained by
+whoever is coding the dialog boxes. The ref in dlg_open() is a direct index
+to this table.
+
+-----------------------------------------------------------------------------
+Function:       int dlg_open(int ref, void *data)
+Description:    Opens an Autocad dialog box. This involves loading the
+                dialog, calling the initialization routine, setting the
+                call back function and starting the dialog.
+Arguments:      ref is a unique reference number assigned to a particular
+                dialog box
+                data is a pointer to you data which you can then access in
+                your callback functions
+Returns:        the value passed to dlg_close()
+-----------------------------------------------------------------------------
+Function:       int dlg_close(int status)
+Description:    Closes an Autocad dialog box. This involves returning to
+                autocad the value of status by calling
+                ads_done_positioned_dialog()
+Arguments:      status is a value which will be returned by ads_start_dialog()
+                and eventually returned to the application. Normal values
+                are DLGOK and DLGCANCEL to signify the user selected OK or
+                CANCEL. Other values are DLGERROR and DLGCLOSEALL. See dlgmgr.h
+                for the latest codes.
+Returns:        DLG_ERR the dialog box was never opened
+                DLG_OK  ok
+-----------------------------------------------------------------------------
+Function:       void *dlg_get_user_data()
+Description:    Returns a pointer to the user data area as passed in
+                in the data argument of dlg_open()
+Returns:        A pointer to user data
+-----------------------------------------------------------------------------
+Function:       int dlg_comeback()
+Description:    Returns a pointer to the user data area as passed in
+                in the data argument of dlg_open()
+Returns:        A pointer to user data
+-----------------------------------------------------------------------------
+Function:       int dlg_comeback()
+Description:    Redisplays all dialog boxes that were temporarily poped down
+                with a call to dlg_close(DLGCOMEBACK). If dlg_open() returns
+                DLGCOMEBACK then you MUST call this function to re-display
+                the dialog boxes. If you do not, then any consequence calls
+                to this function will incorporate all dialog boxes that
+                were closed using DLGCOMEBACK but not re-displayed using
+                dlg_comeback().
+
+                Example:
+
+                dlg_status = dlg_open(0, my_data);
+                while (dlg_status == DLGCOMEBACK)
+                        dlg_status = dlg_comeback();
+
+Returns:        the value passed to dlg_close()
+-----------------------------------------------------------------------------

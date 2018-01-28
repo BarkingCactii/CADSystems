@@ -1,0 +1,111 @@
+/*----------------------------------------------------------------------------
+dim.doc
+
+Dimensioning docs
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+int dimension(_DIM *dim)
+
+
+Function description:
+
+-----------------------------------------------------------------------------
+Function        int dimension(_DIM *dim)
+Description:    Places dimensioning on the AutoCad screen according to the
+                parameters in dim.
+Arguments:      dim is the address of type DIM which contains the
+                dimensioning parameters
+Returns:        DIM_OK  dimension drawn as expected
+                DIM_ERR error
+-----------------------------------------------------------------------------
+
+Modules:
+        
+        dmain.cpp - interface and initialization
+        dextx.cpp - calculates intersection of dimension and extension lines
+        dsort.cpp - sorts extension lines
+        dcross.cpp - calculates crossing dimension and extension lines
+        dmkline.cpp - builds a linked list of graphics commands
+        dtxtwid.cpp - calculates width of dimension text
+        drepeat.cpp - handles creation of repeated dimensions
+        dinterp.cpp - interprets the graphic command linked list
+                
+
+-----------------------------------------------------------------------------
+
+Setting up type DIM for dimension():
+
+DIM is declared in dim.h
+
+The data items which must be set up are:
+
+        dim_loc - a point representing the location of the dimension line
+        break_lines - set TRUE if dimension lines are to be breaked. If DIMEXE
+                      is zero, then lines will not be broken, regardless of the
+                      value of break_lines
+        draw_end_lines - set FALSE if the outer extension lines are NOT to be drawn
+        item_ll - the handle to the linked list containing all the points
+                to which the extension lines will extend. The first item in
+                this list will also work as determining the angle from this
+                point to dim_loc and thus the dimension line will be
+                perpendicular to this line.
+        multi_space - set to TRUE for contiguous similar dimensions to be
+                      displayed in n @ xxx format
+
+        Setting up for the function code is done as follows:
+
+           DIM dim;
+           _D_ITEM     *pnode = (_D_ITEM *)NULL;
+           ads_point   my_point;
+           ads_point   top; 
+                
+           memcpy((void *)dim.dim_loc, (void *)top, sizeof(ads_point));
+     
+           if ((dim.item_ll = l_gethandle()) == LIST_FULL)
+              return(DIM_ERR);
+
+           for (number of extension lines)
+           {
+              if (l_add(dim.item_ll, (void *)&pnode, sizeof(_D_ITEM)) == LIST_ERR)
+                 return(DIM_ERR);
+
+              memcpy((void *)pnode->e_base_pt, (void *)my_point, sizeof(ads_point));
+           }
+
+           dim.multi_space = FALSE;
+           dim.draw_end_lines = TRUE;
+           dim.break_lines = FALSE;
+          
+           dimension(&dim);
+     
+        On return from the dimensioning routine, you must free the linked list.
+        This is done by:
+        
+           l_free(dim.item_ll);
+
+        All other variables are used by the dimensioning routines.
+
+        Hey dudes, is this easy or what?
+
+-----------------------------------------------------------------------------
+
+Note on AutoCad dimensioning variables:
+
+Much of the appearance of the dimensioning routines is determined by
+AutoCad's dimensioning variables. The variables supported are:
+
+        DIMASZ   - arrow size
+        DIMCLRD  - dimension and marks line color
+        DIMCLRE  - extension line color
+        DIMCLRT  - dimension text color
+        DIMEXO   - extension line offset
+        DIMTSZ   - tick size
+        DIMTVP   - text vertical position
+        DIMTXT   - text size
+        DIMSCALE - dimension feature scale factor. Affects DIMEXE, DIMTXT,
+                   DIMTVP, DIMTSZ, DIMEXO, DIMASZ
+        DIMEXE   - extension line extension
+

@@ -1,0 +1,117 @@
+/*
+**		BRIEF -- Basic Reconfigurable Interactive Editing Facility
+**
+**		Written by Jeff Hill
+*/
+
+/*		match.cb:
+**
+**		This macro will locate the matching brace. A brace can be either
+**    a {, }, ) or ).
+**
+*/
+
+#define LEFT_CURLY   1
+#define RIGHT_CURLY  2
+#define LEFT_BRACE   3
+#define RIGHT_BRACE  4
+#define LEFT_SQUARE  5
+#define RIGHT_SQUARE 6
+#define LEFT_POINT   7
+#define RIGHT_POINT  8
+
+#define BACKWARD     1
+#define FORWARD      2
+
+#define LEFT         1
+#define RIGHT        2
+
+int find_match (int direction, string re, string search_str);
+
+void match()
+{
+   int      current_char;
+   int      search_char;
+   int      start_line;
+   int      start_col;
+   int      status;
+
+   string   curly_re = "[//{//}]";
+   string   brace_re = "[()]";
+   string   square_re = "[\\[\\]]";
+   string   point_re = "[<>]";
+   string   braces = "()";
+   string   curlies = "{}";
+   string   square = "\\[\\]";
+   string   point = "<>";
+
+	inq_position (start_line, start_col);
+	current_char = index ("{}()[]<>", read (1));
+   
+   switch(current_char)
+   {
+      case(LEFT_CURLY):
+         status = find_match(FORWARD, curly_re, curlies);
+      case(RIGHT_CURLY):
+         status = find_match(BACKWARD, curly_re, curlies);
+      case(LEFT_BRACE):
+         status = find_match(FORWARD, brace_re, braces);
+      case(RIGHT_BRACE):
+         status = find_match(BACKWARD, brace_re, braces);
+      case(LEFT_SQUARE):
+         status = find_match(FORWARD, square_re, square);
+      case(RIGHT_SQUARE):
+         status = find_match(BACKWARD, square_re, square);
+      case(LEFT_POINT):
+         status = find_match(FORWARD, point_re, point);
+      case(RIGHT_POINT):
+         status = find_match(BACKWARD, point_re, point);
+      default:
+   		message ("Hey dude. Only (,{,[,<,>,],} & )'s supported.");
+         return;
+   }
+
+   if (status <= 0)
+   {
+      message("Match not found.");
+		move_abs (start_line, start_col);
+   }
+}
+
+int find_match (int direction, string reg_expr, string search_str)
+{
+   int   char_found;
+   int   nested_braces = 0;
+   int   status;
+
+   do
+   {
+    	char_found = index (search_str, read (1));
+
+      if (char_found == LEFT)
+         nested_braces++;
+
+      if (char_found == RIGHT)
+         nested_braces--;
+
+      if (nested_braces == 0)
+         return(status);
+
+      if (direction == FORWARD)
+      {
+         if ((status = next_char()) == 0)
+            return(status);
+   		status = search_fwd(reg_expr);
+      }
+      else
+      {
+         if ((status = prev_char()) == 0)
+            return(status);
+   		status = search_back(reg_expr);
+      }
+   }
+   while (status > 0);
+   
+   return(status);
+}
+

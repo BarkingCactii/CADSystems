@@ -1,0 +1,185 @@
+/*----------------------------------------------------------------------------
+llistman.doc
+
+Generic linked list manager docs
+by Jeff Hill
+----------------------------------------------------------------------------*/
+
+Functions:
+
+_L_HANDLE l_gethandle()
+int l_add(void **list_elem, int l_sz)
+int l_insert(void **list_elem, int l_sz, void *insert_pt)
+int l_delete(void *list_elem)
+void *l_head()
+void *l_last()
+void *l_next()
+void *l_prev()
+void l_free()
+int l_push(void *)
+int l_pop(void **)
+int l_empty()
+void *l_nth(_L_HANDLE, int)
+int l_swap(_L_HANDLE, int, int)
+int l_count(_L_HANDLE)
+int l_walk(_L_HANDLE)
+void *l_current(_L_HANDLE)
+void l_make_current(_L_HANDLE, void *)
+
+
+Function description:
+
+-----------------------------------------------------------------------------
+Function:       _L_HANDLE l_gethandle()
+Description:    returns a list handle which is used for all other calls.
+                This handle is used as a reference to distinguish multiple
+                linked lists.
+                Call once before making any other calls to this module
+Returns:        handle for use with linked list calls
+                LIST_FULL all slots taken up. Use l_free() to free any
+                unused lists.
+-----------------------------------------------------------------------------
+Function:       int l_add(_L_HANDLE handle, void **list_elem, int l_sz)
+Description:    Adds an element to the end of the list
+Arguments:      list_elem store the pointer to the malloced memory
+                l_sz size of memory to malloc
+                handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK
+                LIST_ERR if memory malloc failed
+-----------------------------------------------------------------------------
+Function:       int l_insert(_L_HANDLE handle, void **list_elem, int l_sz, void *insert_pt)
+Description:    Insert an element after a specified point
+Arguments:      list_elem store the pointer to the malloced memory
+                l_sz size of memory to malloc
+                insert_pt pointer in list to preceed the inserted node
+                handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK
+                LIST_ERR if memory malloc failed
+-----------------------------------------------------------------------------
+Function:       int l_delete(_L_HANDLE handle, void *list_elem)
+Description:    Delete an element from the list
+Arguments:      list_elem pointer to be removed from list
+                handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK
+-----------------------------------------------------------------------------
+Function:       void *l_head(_L_HANDLE handle, )
+Description:    Returns a pointer to first element in list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        Pointer to first element in list
+                NULL if list empty
+-----------------------------------------------------------------------------
+Function:       void *l_last(_L_HANDLE handle, )
+Description:    Returns a pointer to last element in list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        Pointer to last element in list
+                NULL if list empty
+-----------------------------------------------------------------------------
+Function:       void *l_next(_L_HANDLE handle, )
+Description:    Returns a pointer to the next element in list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        Pointer to next element in list
+                NULL if list empty or end of list
+-----------------------------------------------------------------------------
+Function:       void *l_prev(_L_HANDLE handle)
+Description:    Returns a pointer to the previous element in list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        Pointer to previous element in list
+                NULL if list empty or start of list
+-----------------------------------------------------------------------------
+Function:       void l_free(_L_HANDLE handle)
+Description:    De-allocate the linked list. This lets the list manager know
+                that you are finished with the list and as such frees up room for other
+                linked lists. Note the handle is now invalid and should not be
+                used until another successful call to l_gethandle() is done. You
+                MUST use this function when you are finished with the linked list
+                otherwise the situation where no handles are available will occur.
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        None
+-----------------------------------------------------------------------------
+Function:       int l_push(_L_HANDLE handle, void *item)
+Description:    pushs an element onto the list. This acts like a stack
+                and thus this item will be placed at the start of list.
+                l_push() does not allocate memory, item must be assigned
+                by the caller.
+Arguments:      item the pointer to be added to the list
+                handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK  success
+                LIST_ERR failure
+-----------------------------------------------------------------------------
+Function:       int l_pop(_L_HANDLE handle, void **item)
+Description:    pops an element off the list. This acts like a stack
+                and thus the first item is taken off the list.
+                l_pop() does not free memory, this must be done by the caller
+Arguments:      item the address of a pointer which will be modified to point
+                to the first item in the list
+                handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK  success
+                LIST_ERR failure
+                LIST_EMPTY empty list
+-----------------------------------------------------------------------------
+Function:       int l_empty(_L_HANDLE handle)
+Description:    determines if a list is empty (contains no user data)
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK  list not empty
+                LIST_EMPTY empty list
+-----------------------------------------------------------------------------
+Function:       void l_nth(_L_HANDLE handle, int nth)
+Description:    Returns a pointer to the nth element in the list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+                nth is the element required, starting from 0.
+Returns:        Pointer to nth element in list
+                NULL if list empty or list does not contain nth element
+-----------------------------------------------------------------------------
+Function:       int l_swap(_L_HANDLE handle, int elem1, int elem2)
+Description:    Swaps 2 elements in the linked list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+                elem1 and elem2 are the elements to be swapped, with elements
+                being indexed from 0.
+Returns:        LIST_OK  elements swapped
+                LIST_ERR 1 or both of the elements not in list
+-----------------------------------------------------------------------------
+Function:       int l_count(_L_HANDLE handle)
+Description:    Returns the number of elements in a list
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        number of elements in list. If list is empty, returns 0.
+-----------------------------------------------------------------------------
+Function:       int l_walk(_L_HANDLE handle)            (DEBUGGING ONLY)
+Description:    Walks the linked list, printing out the necessary pointer
+                values. Useful for checking integrity of list. If using under
+                ADS define the compile flag DEBUG_ADS, if using under DOS, do
+                not use this flag.
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK
+-----------------------------------------------------------------------------
+Function:       void *l_current(_L_HANDLE handle)
+Description:    Returns a pointer to the user data at the current position 
+                within the linked list.
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+Returns:        LIST_OK
+-----------------------------------------------------------------------------
+Function:       void l_make_current(_L_HANDLE handle, void *item)
+Description:    Positions the linked list at the node which matches item.
+                Any l_next() or l_prev() will work relative to this new 
+                position.
+Arguments:      handle is a unique reference for your linked list from l_gethandle()
+                item the pointer to which the linked list will be positioned at
+Returns:        None
+-----------------------------------------------------------------------------
+
+Notes on Positioning Functions:
+
+The linked list module retains the position within each linked list
+for use with various positioning functions. The functions and their
+effect are as follows:
+
+l_head()        positioned to start of list
+l_last()        positioned to end of list
+l_next()        positioned to next element if one exists
+l_prev()        positioned to previous element if one exists
+l_delete()      if current position on this element, then the position
+                will be adjusted to previous element if end of list,
+                otherwise will be positioned to next element
+l_nth()         positioned at nth element in list. If nth element does not
+                exist, will be positioned at last item in list
+l_swap()        positioned at element 2
+l_make_current()positioned at the element which matches the data parameter
